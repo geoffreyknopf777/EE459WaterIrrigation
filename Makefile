@@ -1,13 +1,13 @@
 DEVICE     = atmega328p
 CLOCK      = 16000000
 PROGRAMMER = -c arduino -b 115200 -P COM3
-OBJECTS    = main.o btn.o led.o adc.o timer.o lcd.o encoder.o ds1631.o max232.o
+OBJECTS    = test.o
 FUSES      = -U hfuse:w:0xde:m -U lfuse:w:0xff:m -U efuse:w:0x05:m
 
 # Tune the lines below only if you know what you are doing:
 
 AVRDUDE = avrdude $(PROGRAMMER) -p $(DEVICE)
-COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
+COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) -Iboard -Icomm -Icontrols -Iindicators -Isensors
 
 # symbolic targets:
 all:	main.hex
