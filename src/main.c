@@ -20,10 +20,19 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <string.h>
 #include "macros.h"
 
-int main(void)
-{
+#DEFINE MAX_MSG_LEN 10
+
+unsigned char sMsg[MAX_MSG_LEN]; //buffer to store messages
+
+void Init(void){
+	UARTInit(); //initialize the uart module
+}
+
+//Infinite loop of test cases
+void testPins(void){
 	int i=0;
 	int msDelay = 2;
 	
@@ -55,7 +64,17 @@ int main(void)
 				ClearBits(PORTD, i, 1);
 			}
 			
-    }
+    }	
+}
 
+int main(void)
+{
+	Init();
+	
+	while(true){
+		UARTSend(sMsg, );
+		
+		UARTReceive();
+	}
     return 0;   /* never reached */
 }
