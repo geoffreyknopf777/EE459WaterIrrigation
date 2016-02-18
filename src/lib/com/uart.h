@@ -1,8 +1,8 @@
 /*************************************************
-*Geoffrey Knopf
-*EE 109
-*Tues/Thurs 2:00pm
-*max232.h
+*Water Irrigation Project
+*EE 459
+*Team 4
+*uart.h
 *************************************************/
 
 #include <inttypes.h>

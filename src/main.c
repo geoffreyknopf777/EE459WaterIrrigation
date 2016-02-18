@@ -25,7 +25,7 @@
 #include "macros.h"
 #include "uart.h"
 
-#define MAX_MSG_LEN 10
+#define MAX_MSG_LEN 256
 
 char sMsg[MAX_MSG_LEN]; //buffer to store messages
 
@@ -80,5 +80,6 @@ int main(void)
 		nMsgLen = UARTSend(sMsg);
 		nMsgLen = UARTReceive(sMsg);
 	}
-    return 0;   /* never reached */
+  
+	return 0;   /* never reached */
 }
