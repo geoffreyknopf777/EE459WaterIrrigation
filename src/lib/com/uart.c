@@ -29,7 +29,7 @@ void UARTInit(void){
 char rx_char();
 void tx_char(char ch);
 
-unsigned char UARTSend(unsigned char* sMsg){
+char UARTSend(char* sMsg){
 	unsigned char i;
 	
 	for(i=0; i<sizeof(sMsg); i++){
@@ -45,9 +45,8 @@ unsigned char UARTSend(unsigned char* sMsg){
 	return sizeof(sMsg); //return number of bytes sent
 }
 
-unsigned char UARTReceive(unsigned char* sMsg){
+char UARTReceive(char* sMsg){
 	unsigned char i;
-	unsigned char cChar;
 	
 	cli(); //clear local interrupt
 	if ( !(UCSR0A & (1 << RXC0)) ){ //return if no character available in buffer
@@ -56,7 +55,7 @@ unsigned char UARTReceive(unsigned char* sMsg){
 	}
 
 	for(i=0; i<sizeof(sMsg); i++){
-		sMsg[i] = (unsigned char) rx_char();
+		sMsg[i] = rx_char();
 		if(sMsg[i] == '\0'){ //detect '\0' and return
 			return i+1; //return number of bytes received
 		}

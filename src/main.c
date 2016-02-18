@@ -18,14 +18,16 @@
 * 11/18/13 A. Weber    Renamed for ATmega328P
 *************************************************************/
 
+#include <stdio.h>
 #include <avr/io.h>
 #include <util/delay.h>
 #include <string.h>
 #include "macros.h"
+#include "uart.h"
 
-#DEFINE MAX_MSG_LEN 10
+#define MAX_MSG_LEN 10
 
-unsigned char sMsg[MAX_MSG_LEN]; //buffer to store messages
+char sMsg[MAX_MSG_LEN]; //buffer to store messages
 
 void Init(void){
 	UARTInit(); //initialize the uart module
@@ -73,7 +75,7 @@ int main(void)
 	
 	Init();
 	
-	while(true){
+	while(1){
 		sprintf(sMsg, "Hello");
 		nMsgLen = UARTSend(sMsg);
 		nMsgLen = UARTReceive(sMsg);
