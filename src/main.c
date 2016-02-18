@@ -69,12 +69,14 @@ void testPins(void){
 
 int main(void)
 {
+	int nMsgLen;
+	
 	Init();
 	
 	while(true){
-		UARTSend(sMsg, );
-		
-		UARTReceive();
+		sprintf(sMsg, "Hello");
+		nMsgLen = UARTSend(sMsg);
+		nMsgLen = UARTReceive(sMsg);
 	}
     return 0;   /* never reached */
 }

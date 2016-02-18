@@ -52,18 +52,20 @@ unsigned char UARTReceive(unsigned char* sMsg){
 	cli(); //clear local interrupt
 	if ( !(UCSR0A & (1 << RXC0)) ){ //return if no character available in buffer
 		sei(); //enable global interrupts
-		return 0; //failure
+		return 0; //failure, no bytes received
 	}
 
 	for(i=0; i<sizeof(sMsg); i++){
-		cChar =	rx_char();
-		sMsg[i] = cChar;
+		sMsg[i] = (unsigned char) rx_char();
 		if(sMsg[i] == '\0'){ //detect '\0' and return
-			return i+1;
+			return i+1; //return number of bytes received
 		}
 	}
+	//if code gets here, sender forgot to add null terminator
+	//insert '\0' at end of message
+	sMsg[sizeof(sMsg)-1] = '\0';
 	sei(); //set enable interrupt
-	return 1; //success
+	return sizeof(sMsg); //success
 }
 
 char rx_char()
