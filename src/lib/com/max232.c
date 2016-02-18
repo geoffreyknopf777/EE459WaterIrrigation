@@ -39,7 +39,7 @@ void Max232SendMsg(unsigned char* sMsgSend, unsigned char nLength){
 }
 
 unsigned char Max232ReceiveMsg(unsigned char* sMsgReceive, unsigned char nLength){
-	unsigned char i;
+	unsigned char i = 1;
 	unsigned char cChar;
 	cli(); //clear local interrupt
 	if ( !(UCSR0A & (1 << RXC0)) ){ //return if no character available in buffer
