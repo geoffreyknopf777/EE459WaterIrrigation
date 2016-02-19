@@ -3,10 +3,10 @@ CLOCK         = 16000000
 PROGRAMMER    = -c arduino -b 115200 -P COM3
 BUILD_DIR     = bin
 SRC_DIR       = src
-SRC_SUBDIRS   = $(wildcard $(SRC_DIR)/*/*)
+SRC_SUBDIRS   = $(wildcard $(SRC_DIR)/*)
 BUILD_SUBDIRS = $(subst $(SRC_DIR),$(BUILD_DIR),$(SRC_SUBDIRS))
-INCLUDES      = $(foreach include, $(wildcard $(SRC_DIR)/lib/*/), -I$(include))
-SOURCES       = $(SRC_DIR)/main.c $(wildcard $(SRC_DIR)/lib/*/*.c)
+INCLUDES      = $(foreach include, $(wildcard $(SRC_DIR)/*/), -I$(include))
+SOURCES       = $(wildcard $(SRC_DIR)/*/*.c)
 OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o,$(SOURCES)))
 FUSES         = -U hfuse:w:0xde:m -U lfuse:w:0xff:m -U efuse:w:0x05:m
 
@@ -75,7 +75,7 @@ disasm:	main.elf
 	avr-objdump -d $(BUILD_DIR)/main.elf
 
 cpp:
-	$(COMPILE) -E main.c
+	$(COMPILE) -E $(SRC_DIR)/main/main.c
 
 test: test.hex
 	$(AVRDUDE) -U flash:w:test.hex:i
