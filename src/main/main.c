@@ -22,7 +22,8 @@ void RunTests(void){
 }
 
 void Init(void){
-	UARTInit(); //initialize the uart module
+	int nBaudRate = 9600;
+	UARTInit(nBaudRate); //initialize the uart module
 }
 
 int main(void)
@@ -32,7 +33,7 @@ int main(void)
 	Init();
 	
 	while(1){
-		sprintf(sMsg, "Hello");
+		sprintf(sMsg, "Hello I am Geoff\n");
 		nMsgLen = UARTSend(sMsg);
 		nMsgLen = UARTReceive(sMsg);
 	}

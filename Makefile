@@ -1,6 +1,6 @@
-DEVICE        = atmega328p
-CLOCK         = 16000000
-PROGRAMMER    = -c arduino -b 115200 -P COM3
+DEVICE     = atmega328p
+CLOCK      = 9830400
+PROGRAMMER = -c usbtiny -P usb
 BUILD_DIR     = bin
 SRC_DIR       = src
 SRC_SUBDIRS   = $(wildcard $(SRC_DIR)/*)
@@ -8,7 +8,23 @@ BUILD_SUBDIRS = $(subst $(SRC_DIR),$(BUILD_DIR),$(SRC_SUBDIRS))
 INCLUDES      = $(foreach include, $(wildcard $(SRC_DIR)/*/), -I$(include))
 SOURCES       = $(wildcard $(SRC_DIR)/*/*.c)
 OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o,$(SOURCES)))
-FUSES         = -U hfuse:w:0xde:m -U lfuse:w:0xff:m -U efuse:w:0x05:m
+FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xe0:m
+
+# Fuse Low Byte = 0xe0   Fuse High Byte = 0xd9   Fuse Extended Byte = 0xff
+# Bit 7: CKDIV8  = 1     Bit 7: RSTDISBL  = 1    Bit 7:
+#     6: CKOUT   = 1         6: DWEN      = 1        6:
+#     5: SUT1    = 1         5: SPIEN     = 0        5:
+#     4: SUT0    = 0         4: WDTON     = 1        4:
+#     3: CKSEL3  = 0         3: EESAVE    = 1        3:
+#     2: CKSEL2  = 0         2: BOOTSIZ1  = 0        2: BODLEVEL2 = 1
+#     1: CKSEL1  = 0         1: BOOTSIZ0  = 0        1: BODLEVEL1 = 1
+#     0: CKSEL0  = 0         0: BOOTRST   = 1        0: BODLEVEL0 = 1
+# External clock source, start-up time = 14 clks + 65ms
+# Don't output clock on PORTB0, don't divide clock by 8,
+# Boot reset vector disabled, boot flash size 2048 bytes,
+# Preserve EEPROM disabled, watch-dog timer off
+# Serial program downloading enabled, debug wire disabled,
+# Reset enabled, brown-out detection disabled
 
 # Tune the lines below only if you know what you are doing:
 

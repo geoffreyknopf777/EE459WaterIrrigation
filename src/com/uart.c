@@ -14,13 +14,11 @@
 #include "uart.h"
 
 #define FOSC 16000000         // Clock frequency
-#define BAUD 9600             // Baud rate used
-#define MYUBRR FOSC/16/BAUD-1 // Value for UBRR0
 #define RX_TIMEOUT 10000      // Timeout for rx function
 
-void UARTInit(void){
+void UARTInit(int nBaudRate){
 	//Set buad rate
-	UBRR0 = MYUBRR;
+	UBRR0 = (char) FOSC/16/nBaudRate-1;
 	// Enable RX and TX
 	UCSR0B |= (1 << TXEN0 | 1 << RXEN0); //Turn on transmitter and receiver
 	UCSR0C = (3 << UCSZ00); //Async., no parity,

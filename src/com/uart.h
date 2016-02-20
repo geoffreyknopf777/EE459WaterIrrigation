@@ -7,7 +7,8 @@
 
 #include <inttypes.h>
 
-void UARTInit(void);
+/* Initialize the UART module with a particular buad rate */
+void UARTInit(int nBaudRate);
 
 /* Sends the contents of sMsg up to nMaxBytes. Returns the number of bytes sent. 
 Will stop sending when '\0' or nMaxBytes is encountered
