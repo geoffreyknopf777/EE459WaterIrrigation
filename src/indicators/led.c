@@ -33,9 +33,9 @@ void LedTurnOff(LED* pLed){
 //Blink the led for the specified number of milliseconds:
 void LedBlink(LED* pLed, int nMilliseconds){
 	SetBits(*(*pLed).pPORT, (*pLed).nPinNum, 1);
-	_delay_ms(nMilliseconds);
+	delay_ms(nMilliseconds);
 	ClearBits(*(*pLed).pPORT, (*pLed).nPinNum, 1);
-	_delay_ms(nMilliseconds);
+	delay_ms(nMilliseconds);
 }
 
 //Get the state of the led:
