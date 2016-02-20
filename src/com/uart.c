@@ -16,6 +16,7 @@
 #define FOSC 16000000         // Clock frequency
 #define BAUD 9600             // Baud rate used
 #define MYUBRR FOSC/16/BAUD-1 // Value for UBRR0
+#define RX_TIMEOUT 10000      // Timeout for rx function
 
 void UARTInit(void){
 	//Set buad rate
@@ -33,15 +34,11 @@ char UARTSend(char* sMsg){
 	unsigned char i;
 	
 	for(i=0; i<sizeof(sMsg); i++){
-		tx_char(sMsg[i]);
 		if(sMsg[i] == '\0'){ //detect '\0' and return
-			return i+1; //return number of bytes sent
+			return i; //return number of bytes sent
 		}
+		tx_char(sMsg[i]);
 	}
-	//if the code gets here, caller forgot to add null terminator
-	//insert '\0' at end and send it
-	sMsg[sizeof(sMsg)-1] = '\0';
-	tx_char(sMsg[sizeof(sMsg)-1]);
 	return sizeof(sMsg); //return number of bytes sent
 }
 
@@ -69,8 +66,15 @@ char UARTReceive(char* sMsg){
 
 char rx_char()
 {
+	int nTimeout = 0;
+
  // Wait for receive complete flag to go high
-	while ( !(UCSR0A & (1 << RXC0)) ){}
+	while ( !(UCSR0A & (1 << RXC0)) ){
+		if(nTimeout > RX_TIMEOUT){
+			return '\0';
+		}
+		nTimeout++;
+	}
 		return UDR0;
 }
 

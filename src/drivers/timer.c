@@ -12,6 +12,10 @@
 #include "lcd.h"
 #include "timer.h"
 
+#define CLK_RATE 16000000 //processor clock rate in MHz
+
+int nTicks;
+
 //Define arrays for relevant registers:
 volatile uint8_t* aTCCRA[] = {&TCCR0A, &TCCR1A, &TCCR2A}; //pwm upper threshold
 volatile uint8_t* aTCCRB[] = {&TCCR0B, &TCCR1B, &TCCR2B}; //pwm lower threshold
@@ -137,6 +141,33 @@ unsigned int TimerGetCount(unsigned char cTmrIndex){
 	return (unsigned int) *aTCNT[cTmrIndex];
 }
 
+int TimerInterruptsPerUs(void){
+	return CLK_RATE/(1000000*(*aOCRA[1]));
+}
+
+int TimerCurrentTime(void){
+	return nTicks;
+}
+
+int TimerUsSince(){
+	return (TimerCurrentTime() - nTicks) % (TimerInterruptsPerUs());	
+}
+
+int TimerMsSince(int nTicks){
+	return (TimerCurrentTime() - nTicks) % (TimerInterruptsPerUs() * 1000);
+}
+
+int TimerSecSince(int nTicks){
+	return (TimerCurrentTime() - nTicks) % (TimerInterruptsPerUs() * 1000000);
+}
+
+/* Count each tick of the timer 
+Accumulate milliseconds
+Accumulate seconds
+*/
+void TimerTick(){
+	nTicks++;
+}
 
 //ISRs for the timers:
 ISR(TIMER0_COMPA_vect) { 
@@ -145,6 +176,8 @@ ISR(TIMER0_COMPA_vect) {
 }
 
 ISR(TIMER1_COMPA_vect) { 
+	TimerTick();
+
 	//Call the callback function:
 	aCallbacks[1]();
 }
