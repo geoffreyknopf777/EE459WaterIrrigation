@@ -60,7 +60,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(COMPILE) -S $< -o $@
 
 flash:	all
-	$(AVRDUDE) -U flash:w:main.hex:i
+	$(AVRDUDE) -U flash:w:$(BUILD_DIR)/main.hex:i
 
 fuse:
 	$(AVRDUDE) $(FUSES)
@@ -70,7 +70,7 @@ install: flash fuse
 
 # if you use a bootloader, change the command below appropriately:
 load: all
-	bootloadHID main.hex
+	bootloadHID $(BUILD_DIR)/main.hex
 
 clean:
 	rm -rf $(BUILD_DIR)
