@@ -186,3 +186,18 @@ ISR(TIMER2_COMPA_vect) {
 	//Call the callback function:
 	aCallbacks[2]();
 }
+
+
+//Delay microseconds
+void delay_us(int nUs){
+	while(nUs--) {
+		_delay_us(1);
+	}
+}
+
+//Delay milliseonds
+void delay_ms(int nMs){
+	while(nMs--) {
+		_delay_ms(1);
+	}	
+}

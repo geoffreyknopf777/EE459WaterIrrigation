@@ -5,7 +5,7 @@
 *led.c
 *************************************************/
 
-#include <util/delay.h>
+#include "timer.h"
 #include "macros.h"
 #include "led.h"
 

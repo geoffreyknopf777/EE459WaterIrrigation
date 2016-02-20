@@ -6,7 +6,7 @@
 *************************************************/
 
 #include <avr/io.h>
-#include <util/delay.h>
+#include "timer.h"
 #include "macros.h"
 #include "adc.h"
 #include "lcd.h"
@@ -32,22 +32,22 @@ void LcdInit()
 	SetBits(DDRD, 0, 0b11111111); //Port D as outputs
 	SetBits(DDRB, 0, 0b00000011); //Port B as outputs
 
-   _delay_ms(15);              // Delay at least 15ms
+  delay_ms(15);              // Delay at least 15ms
   // Use writenibble to send 0011
 	writenibble(0x03);
-  _delay_ms(5);               // Delay at least 4msec
+  delay_ms(5);               // Delay at least 4msec
   // Use writenibble to send 0011
 	writenibble(0x03);
-  _delay_us(120);             // Delay at least 100usec
+  delay_us(120);             // Delay at least 100usec
   // Use writenibble to send 0011
 	writenibble(0x03);
   // Use writenibble to send 0010    // Function Set: 4-bit interface
 	writenibble(0x02);
-	_delay_ms(2);
+	delay_ms(2);
   LcdWriteCommand(0x28);         // Function Set: 4-bit interface, 2 lines
-	_delay_ms(2);
+	delay_ms(2);
   LcdWriteCommand(LCD_DISPLAY_ON);         // Display and cursor on
-	_delay_ms(2);
+	delay_ms(2);
 	LcdWriteCommand(LCD_CLEAR_SCREEN);
 }
 
@@ -105,7 +105,7 @@ void writenibble(unsigned char x)
 	//Toggle enable bit:
 	ClearBits(PORTB, LCD_ENABLE, 1);
 	SetBits(PORTB, LCD_ENABLE, 1);
-	_delay_us(250); //hold the pin high for a bit
+	delay_us(250); //hold the pin high for a bit
 	ClearBits(PORTB, LCD_ENABLE, 1);
 }
 
@@ -113,7 +113,7 @@ void writenibble(unsigned char x)
 void writebyte(unsigned char x){
 	writenibble(x >> 4); //write high nibble
 	writenibble(x & 0x0F); //write low nibble
-	_delay_ms(2);
+	delay_ms(2);
 }
 
 //Output a byte to the LCD display data register

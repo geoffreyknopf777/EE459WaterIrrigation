@@ -6,7 +6,6 @@
 *************************************************/
 
 #include <avr/io.h>
-#include <util/delay.h>
 #include "adc.h"
 #include "macros.h"
 

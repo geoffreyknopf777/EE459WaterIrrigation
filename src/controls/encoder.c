@@ -8,7 +8,6 @@
 #include <inttypes.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include "macros.h"
 #include "lcd.h"
 #include "encoder.h"

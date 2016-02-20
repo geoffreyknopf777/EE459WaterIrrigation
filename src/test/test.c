@@ -6,7 +6,7 @@
 *************************************************/
 
 #include <avr/io.h>
-#include <util/delay.h>
+#include "timer.h"
 #include "macros.h"
 
 #define MS_DELAY 2
@@ -25,21 +25,21 @@ void TestATmega328PPins(void){
 			//Toggle all B outputs
 			for(i=0; i<8; i++){
 				SetBits(PORTB, i, 1);
-				_delay_ms(MS_DELAY);
+				delay_ms(MS_DELAY);
 				ClearBits(PORTB, i, 1);
 			}
 			
 			//Toggle all C outputs
 			for(i=0; i<8; i++){
 				SetBits(PORTC, i, 1);
-				_delay_ms(MS_DELAY);
+				delay_ms(MS_DELAY);
 				ClearBits(PORTC, i, 1);
 			}
 			
 			//Toggle all D outputs
 			for(i=0; i<8; i++){
 				SetBits(PORTD, i, 1);
-				_delay_ms(MS_DELAY);
+				delay_ms(MS_DELAY);
 				ClearBits(PORTD, i, 1);
 			}
 			

@@ -9,6 +9,7 @@
 #define TIMER_H
 
 #include <inttypes.h>
+#include <util/delay.h>
 
 //Initialize a timer
 void TimerInit(unsigned char cTmrIndex, unsigned char cPrescaler, unsigned char bPinX, unsigned char bPinY);
@@ -38,3 +39,9 @@ void TimerClear(unsigned char cTmrIndex);
 
 //Get a timer count
 unsigned int TimerGetCount(unsigned char cTmrIndex);
+
+//Delay microseconds
+void delay_us(int nUs);
+
+//Delay milliseonds
+void delay_ms(int nMs);
