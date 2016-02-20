@@ -13,8 +13,8 @@
 #include "lcd.h"
 #include "uart.h"
 
-#define FOSC 16000000         // Clock frequency
-#define RX_TIMEOUT 10000      // Timeout for rx function
+#define FOSC 9830400      // Clock frequency
+#define RX_TIMEOUT 10000  // Timeout for rx function
 
 void UARTInit(int nBaudRate){
 	//Set buad rate

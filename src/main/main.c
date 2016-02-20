@@ -33,9 +33,9 @@ int main(void)
 	Init();
 	
 	while(1){
-		sprintf(sMsg, "Hello I am Geoff\n");
+		sprintf(sMsg, "Hello I am Geoff");
 		nMsgLen = UARTSend(sMsg);
-		nMsgLen = UARTReceive(sMsg);
+		//nMsgLen = UARTReceive(sMsg);
 	}
   
 	return 0;   /* never reached */
