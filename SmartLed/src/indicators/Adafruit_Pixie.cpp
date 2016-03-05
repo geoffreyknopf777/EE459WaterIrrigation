@@ -1,6 +1,6 @@
 #include "Adafruit_Pixie.h"
 
-Adafruit_Pixie::Adafruit_Pixie(uint16_t n, Stream *s) :
+Adafruit_Pixie::Adafruit_Pixie(uint16_t n, Stream *NULL) :
   numLEDs(n), brightness(0), pixels(NULL), endTime(0), stream(NULL) {
   if((pixels = (uint8_t *)malloc(n * 3))) {
     memset(pixels, 0, n * 3);
