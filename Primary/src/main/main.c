@@ -15,7 +15,8 @@
 
 #define MAX_MSG_LEN 256
 
-char sMsg[MAX_MSG_LEN]; //buffer to store messages
+char sSendMsg[MAX_MSG_LEN]; //send buffer
+char sRecMsg[MAX_MSG_LEN]; //receive buffer
 
 void RunTests(void){
 	TestATmega328PPins();
@@ -33,9 +34,16 @@ int main(void)
 	Init();
 	
 	while(1){
-		sprintf(sMsg, "Hello I am Geoff\r\n");
-	  nMsgLen = UARTSend(sMsg);
-		//nMsgLen = UARTReceive(sMsg);
+		// Wait for transmitter data register empty
+                //while ((UCSR0A & (1<<UDRE0)) == 0) {}
+                //UDR0 = 'a';
+		
+		//sprintf(sMsg, "Hello world!\r\n", sizeof(sMsg));
+	        nMsgLen = UARTReceive(sRecMsg);
+		sprintf(sSendMsg, "%s\r\n", sRecMsg);
+		if(nMsgLen > 0){
+			nMsgLen = UARTSend(sSendMsg);
+		}
 	}
   
 	return 0;   /* never reached */
