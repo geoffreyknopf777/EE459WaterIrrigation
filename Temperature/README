@@ -1,0 +1,35 @@
+Welcome to the Team 4 EE459 Water Irrigation Project!
+
+We are students from the University of Southern California.
+
+This code is designed for the ATmega328P chip using the avrdude programming tool.
+
+DIRECTORY STRUCTURE:
+	The "src" directory contains all the source code for the project.
+	The "bin" directory contains all the object files that are linked into the final executable program, "main.hex" 
+		which is loaded into the EEPROM of the ATmega328P.
+	
+BUILD INSTRUCTIONS:	
+	To build the code, simply type "make" in this directory.
+	To remove object files, type "make clean".
+	To configure the chip for the first time, type "make fuse".
+	To program the chip, type "make flash".
+	
+COLLABORATORS:
+	Geoffrey Knopf
+	Timothy Odonga
+	Ying Ying
+	Jonathan Wong
+
+CODING STANDARDS
+	Strings,characters,integers,booleans,user defined structures.
+	Naming conventions:
+	For Strings: a prefix of lowercase ’s’ used in the String name.
+	For Characters:a prefix of ‘c’ is used in the character name.
+	For Integers: a prefix of lowercase ’n’ is used in the integer name.
+	For user defined structures: a prefix of lowercase ‘u’ is used in the name.
+
+	If using a constant in the code use a #define constant at the top.
+	Different modules are used. If necessary for a module, an init_() function, and 		other functions are used.
+	
+	  
