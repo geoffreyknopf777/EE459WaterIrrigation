@@ -26,6 +26,8 @@ void Init(void){
 	UARTInit(nBaudRate); //initialize the uart module
 }
 
+
+
 int main(void)
 {
 	int nMsgLen;
