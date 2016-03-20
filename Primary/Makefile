@@ -1,14 +1,16 @@
-DEVICE     = atmega328p
-CLOCK      = 7372800
-PROGRAMMER = -c usbtiny -P usb
+DEVICE        = atmega328p
+CLOCK         = 7372800
+PROGRAMMER    = -c usbtiny -P usb
 BUILD_DIR     = bin
 SRC_DIR       = src
 SRC_SUBDIRS   = $(wildcard $(SRC_DIR)/*)
 BUILD_SUBDIRS = $(subst $(SRC_DIR),$(BUILD_DIR),$(SRC_SUBDIRS))
 INCLUDES      = $(foreach include, $(wildcard $(SRC_DIR)/*/), -I$(include))
 SOURCES       = $(wildcard $(SRC_DIR)/*/*.c)
-OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o,$(SOURCES)))
-FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xe0:m
+SOURCES      += $(wildcard $(SRC_DIR)/*/*.cpp)
+OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o,$(subst .cpp, .o, $(SOURCES)))) 
+$(info $(OBJECTS))
+FUSES         = -U hfuse:w:0xd9:m -U lfuse:w:0xe0:m
 
 # Fuse Low Byte = 0xe0   Fuse High Byte = 0xd9   Fuse Extended Byte = 0xff
 # Bit 7: CKDIV8  = 1     Bit 7: RSTDISBL  = 1    Bit 7:
@@ -29,7 +31,8 @@ FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xe0:m
 # Tune the lines below only if you know what you are doing:
 
 AVRDUDE = avrdude $(PROGRAMMER) -p $(DEVICE)
-COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(INCLUDES)
+COMPILE = avr-g++ -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(INCLUDES)
+#COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(INCLUDES)
 
 # Define a newline character to separate operations in a foreach loop
 define \n
@@ -41,7 +44,7 @@ endef
 all:	main.hex
 
 # Map source files in the SRC_DIR to object files in the BUILD_DIR
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
 	@$(foreach dir, $(BUILD_SUBDIRS), @mkdir -p $(dir)${\n}) 
 	$(COMPILE) -c $< -o $@
@@ -91,7 +94,7 @@ disasm:	main.elf
 	avr-objdump -d $(BUILD_DIR)/main.elf
 
 cpp:
-	$(COMPILE) -E $(SRC_DIR)/main/main.c
+	$(COMPILE) -E $(SRC_DIR)/main/main.cpp
 
 test: test.hex
 	$(AVRDUDE) -U flash:w:test.hex:i
