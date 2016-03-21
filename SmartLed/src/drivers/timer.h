@@ -29,8 +29,6 @@ void TimerSetPwmPulsePeriodY(unsigned char cTmrIndex, uint16_t nPulsePeriodClock
 //Start a timer
 void TimerStart(unsigned char cTmrIndex);
 
-#endif /* TIMER_H */
-
 //Stop a timer
 void TimerStop(unsigned char cTmrIndex);
 
@@ -45,3 +43,5 @@ void delay_us(int nUs);
 
 //Delay milliseonds
 void delay_ms(int nMs);
+
+#endif /* TIMER_H */
