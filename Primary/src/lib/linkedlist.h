@@ -26,7 +26,7 @@ and a pointer to a function that compares list items for equality. */
 bool LinkedListCreate(linkedlist* pLL, unsigned int nDataSize, void (*pPrintCB) (void*), bool (*pEqual)(void*, void*)){
 	if(!pLL)
 		return false;
-	(*pLL).pHead = (void*)NULL;
+	(*pLL).pHead = (node*)NULL;
 	(*pLL).pPrintCB = pPrintCB;
 	(*pLL).pEqual = pEqual;
 	(*pLL).nDataSize = nDataSize;
@@ -127,7 +127,7 @@ bool LinkedListInsert(linkedlist* pLL, void* pData){
 		pPrevNode = pCurNode;
 		pCurNode = (node*)((*pCurNode).pNext);
 		}
-		(*pPrevNode).pNext = (void*)pNode;
+		(*pPrevNode).pNext = (node*)pNode;
 		(*pLL).nLength++;
 		return true;
 	}
@@ -199,7 +199,7 @@ bool LinkedListClear(linkedlist* pLL){
 		free(pCurNode); //delete current node
 		pCurNode = pNextNode; //move to the next node
 	}
-(*pLL).pHead = (void*)NULL;
+(*pLL).pHead = (node*)NULL;
 (*pLL).nLength = 0;
 return true;
 }
