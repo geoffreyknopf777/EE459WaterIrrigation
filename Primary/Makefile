@@ -7,7 +7,7 @@ SRC_SUBDIRS   = $(wildcard $(SRC_DIR)/*)
 BUILD_SUBDIRS = $(subst $(SRC_DIR),$(BUILD_DIR),$(SRC_SUBDIRS))
 INCLUDES      = $(foreach include, $(wildcard $(SRC_DIR)/*/), -I$(include))
 SOURCES       = $(wildcard $(SRC_DIR)/*/*.c)
-OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o, $SOURCES)) 
+OBJECTS       = $(subst $(SRC_DIR),$(BUILD_DIR),$(subst .c,.o, $(SOURCES))) 
 $(info $(OBJECTS))
 FUSES         = -U hfuse:w:0xd9:m -U lfuse:w:0xe0:m
 
