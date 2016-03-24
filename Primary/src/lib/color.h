@@ -14,11 +14,11 @@
 #define COLOR_BLUE  ( ColorCreate(0, 0, 255) )
 
 /* RGB color structure definition */
-struct {
+struct ColorRGB{
 	char cRed;
 	char cGreen;
 	char cBlue;
-} ColorRGB;
+};
 
 /* Create an RGB color */
 struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);

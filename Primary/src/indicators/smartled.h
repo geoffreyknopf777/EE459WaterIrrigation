@@ -10,9 +10,9 @@
 
 #include "color.h"
 
-struct {
+struct SmartLED{
 	struct ColorRGB uColor;
-} SmartLED;
+};
 
 /* Initialize a smart led instance.
 The first led to be initialized will be the first led in the chain,
