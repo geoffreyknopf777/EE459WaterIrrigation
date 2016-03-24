@@ -20,7 +20,7 @@ void TemperatureSensorInit(volatile uint8_t* pPORTSet, volatile unsigned char* p
 }
 
 /* Get the tempurature in Celsius */
-unsigned char TemperatureSensorGetTempC(void){
+unsigned char TemperatureSensorReadC(void){
 	unsigned char data;
 	
 	//select the correct analog input pin for adc conversion
