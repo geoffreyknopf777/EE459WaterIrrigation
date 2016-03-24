@@ -24,12 +24,12 @@ typedef struct ColorRGB{
 ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 
 /* Get the red component of an RGB color */
-#define ColorRGBGetRed(ColorRGB uColorRGB) ( uColorRGB.cRed )
+#define ColorRGBGetRed(uColorRGB) ( uColorRGB.cRed )
 
 /* Get the green component of an RGB color */
-#define ColorRGBGetRed(ColorRGB uColorRGB) ( uColorRGB.cGreen )
+#define ColorRGBGetRed(uColorRGB) ( uColorRGB.cGreen )
 
 /* Get the blue component of an RGB color */
-#define ColorRGBGetRed(ColorRGB uColorRGB) ( uColorRGB.cBlue )
+#define ColorRGBGetRed(uColorRGB) ( uColorRGB.cBlue )
 
 #endif /* COLOR_H */
