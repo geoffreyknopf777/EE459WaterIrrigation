@@ -25,10 +25,6 @@ void TestATmega328PPins(void){
 			//Toggle all B outputs
 			for(i=0; i<8; i++){
 				SetBits(PORTB, i, 1);
-				
-				bool value = GetBits(PORTB, 5);
-				bool value = PORTB & 0b00001000;
-				
 				delay_ms(MS_DELAY);
 				ClearBits(PORTB, i, 1);
 			}
