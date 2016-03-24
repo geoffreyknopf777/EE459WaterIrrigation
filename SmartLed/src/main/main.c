@@ -22,9 +22,16 @@ void RunTests(void){
 	TestATmega328PPins();
 }
 
+SmartLED uLed;
+
 void Init(void){
 	int nBaudRate = 9600;
 	UARTInit(nBaudRate); //initialize the uart module
+	
+	//Create a smart led
+	ColorRGB uColor;
+	uColor = ColorRGBCreate(0, 0, 0);
+	SmartLEDInit(&uLed, uColor);
 }
 
 int main(void)
@@ -32,18 +39,13 @@ int main(void)
 	int nMsgLen;
 	
 	Init();
+
+	char color = 0;
 	
 	while(1){
-		// Wait for transmitter data register empty
-                //while ((UCSR0A & (1<<UDRE0)) == 0) {}
-                //UDR0 = 'a';
-		
-		//sprintf(sMsg, "Hello world!\r\n", sizeof(sMsg));
-	        nMsgLen = UARTReceive(sRecMsg);
-		sprintf(sSendMsg, "%s\r\n", sRecMsg);
-		if(nMsgLen > 0){
-			nMsgLen = UARTSend(sSendMsg);
-		}
+		SmartLEDProcess();
+		uLed.uColor = RGBColorCreate(255-color, color, 2*color);
+		color++;
 	}
   
 	return 0;   /* never reached */
