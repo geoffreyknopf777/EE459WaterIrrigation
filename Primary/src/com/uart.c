@@ -16,7 +16,7 @@
 #define FOSC 7372800      // Clock frequency
 #define RX_TIMEOUT 10000  // Timeout for rx function
 
-void UARTInit(int nBaudRate){
+void UARTInit(uint32_t nBaudRate){
 	//Set buad rate
 	UBRR0 = (char) FOSC/16/nBaudRate-1;
 	// Enable RX and TX
