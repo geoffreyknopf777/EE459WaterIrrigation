@@ -11,6 +11,7 @@
 #include <string.h>
 #include "macros.h"
 #include "uart.h"
+#include "temperaturesensor.h"
 #include "test.h"
 
 #define MAX_MSG_LEN 256
@@ -22,7 +23,7 @@ void RunTests(void){
 	TestATmega328PPins();
 }
 
-SmartLED uLed;
+struct SmartLED uLed;
 
 void Init(void){
 	int nBaudRate = 9600;
@@ -40,7 +41,7 @@ int main(void)
 	
 	while(1){
 		degreesCelsius = TemperatureSensorReadC();
-		sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelcius);
+		sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelsius);
 		UARTSend(sMsg);
 	}
   
