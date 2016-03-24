@@ -6,8 +6,8 @@
 *************************************************/
 
 #include <stdbool.h> 
-#include "com/uart.h"
-#include "drivers/timer.h"
+#include "uart.h"
+#include "timer.h"
 #include "linkedlist.h"
 #include "color.h"
 #include "smartled.h"
