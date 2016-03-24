@@ -60,7 +60,7 @@ void TimerInit(unsigned char cTmrIndex, unsigned char cPrescaler, unsigned char 
 
 void TimerInitInterrupt(unsigned char cTmrIndex, int nCyclesPerInterrupt, void* pCallback){
 	//Set the callback function:
-	aCallbacks[cTmrIndex] = pCallback;
+	//aCallbacks[cTmrIndex] = pCallback;
 	//Enable the interrupts:
 	if(aPinX[cTmrIndex]){
 		*aOCRA[cTmrIndex] = nCyclesPerInterrupt;
