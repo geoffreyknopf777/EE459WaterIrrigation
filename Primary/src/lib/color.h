@@ -27,9 +27,9 @@ ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 #define ColorRGBGetRed(uColorRGB) ( uColorRGB.cRed )
 
 /* Get the green component of an RGB color */
-#define ColorRGBGetRed(uColorRGB) ( uColorRGB.cGreen )
+#define ColorRGBGetGreen(uColorRGB) ( uColorRGB.cGreen )
 
 /* Get the blue component of an RGB color */
-#define ColorRGBGetRed(uColorRGB) ( uColorRGB.cBlue )
+#define ColorRGBGetBlue(uColorRGB) ( uColorRGB.cBlue )
 
 #endif /* COLOR_H */
