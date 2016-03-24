@@ -14,14 +14,14 @@
 #define COLOR_BLUE  ( ColorCreate(0, 0, 255) )
 
 /* RGB color structure definition */
-typedef struct {
+struct {
 	char cRed;
 	char cGreen;
 	char cBlue;
 } ColorRGB;
 
 /* Create an RGB color */
-ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
+struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 
 /* Get the red component of an RGB color */
 #define ColorRGBGetRed(uColorRGB) ( uColorRGB.cRed )
