@@ -43,7 +43,7 @@ endef
 all:	main.hex
 
 # Map source files in the SRC_DIR to object files in the BUILD_DIR
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(BUILD_DIR)
 	@$(foreach dir, $(BUILD_SUBDIRS), @mkdir -p $(dir)${\n}) 
 	$(COMPILE) -c $< -o $@
@@ -93,7 +93,7 @@ disasm:	main.elf
 	avr-objdump -d $(BUILD_DIR)/main.elf
 
 cpp:
-	$(COMPILE) -E $(SRC_DIR)/main/main.cpp
+	$(COMPILE) -E $(SRC_DIR)/main/main.c
 
 test: test.hex
 	$(AVRDUDE) -U flash:w:test.hex:i
