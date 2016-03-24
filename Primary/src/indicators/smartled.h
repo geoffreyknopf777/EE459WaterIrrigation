@@ -8,7 +8,7 @@
 #ifndef SMARTLED_H
 #define SMARTLED_H
 
-#include color.h
+#include "color.h"
 
 typedef struct SmartLED{
 	ColorRGB uColor;

@@ -6,11 +6,11 @@
 *************************************************/
 
 #include <stdbool.h> 
-#include com/uart.h
-#include drivers/timer.h
-#include linkedlist.h
-#include color.h
-#include smartled.h
+#include "com/uart.h"
+#include "drivers/timer.h"
+#include "linkedlist.h"
+#include "color.h"
+#include "smartled.h"
 
 linkedlist led_list;
 bool initialized = false;
