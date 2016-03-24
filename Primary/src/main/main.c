@@ -22,28 +22,26 @@ void RunTests(void){
 	TestATmega328PPins();
 }
 
+SmartLED uLed;
+
 void Init(void){
 	int nBaudRate = 9600;
 	UARTInit(nBaudRate); //initialize the uart module
+	TemperatureSensorInit(&DDRC, &PORTC, 0);
 }
 
 int main(void)
 {
 	int nMsgLen;
+	char sMsg[254];
+	unsigned char degreesCelsius;
 	
 	Init();
 	
 	while(1){
-		// Wait for transmitter data register empty
-                //while ((UCSR0A & (1<<UDRE0)) == 0) {}
-                //UDR0 = 'a';
-		
-		//sprintf(sMsg, "Hello world!\r\n", sizeof(sMsg));
-	        nMsgLen = UARTReceive(sRecMsg);
-		sprintf(sSendMsg, "%s\r\n", sRecMsg);
-		if(nMsgLen > 0){
-			nMsgLen = UARTSend(sSendMsg);
-		}
+		degreesCelsius = TemperatureSensorReadC();
+		sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelcius);
+		UARTSend(sMsg);
 	}
   
 	return 0;   /* never reached */

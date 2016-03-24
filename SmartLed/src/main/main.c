@@ -27,25 +27,21 @@ SmartLED uLed;
 void Init(void){
 	int nBaudRate = 9600;
 	UARTInit(nBaudRate); //initialize the uart module
-	
-	//Create a smart led
-	ColorRGB uColor;
-	uColor = ColorRGBCreate(0, 0, 0);
-	SmartLEDInit(&uLed, uColor);
+	TemperatureSensorInit(&DDRC, &PORTC, 0);
 }
 
 int main(void)
 {
 	int nMsgLen;
+	char sMsg[254];
+	unsigned char degreesCelsius;
 	
 	Init();
-
-	char color = 0;
 	
 	while(1){
-		SmartLEDProcess();
-		uLed.uColor = RGBColorCreate(255-color, color, 2*color);
-		color++;
+		degreesCelsius = TemperatureSensorReadC();
+		sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelcius);
+		UARTSend(sMsg);
 	}
   
 	return 0;   /* never reached */
