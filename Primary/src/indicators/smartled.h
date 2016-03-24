@@ -10,21 +10,21 @@
 
 #include "color.h"
 
-typedef struct SmartLED{
-	ColorRGB uColor;
-};
+struct {
+	struct ColorRGB uColor;
+} SmartLED;
 
 /* Initialize a smart led instance.
 The first led to be initialized will be the first led in the chain,
 the next led to be initialized will be the next led in the chain,
 and so on. */
-void SmartLEDInit(SmartLED* pSmartLed, ColorRGB uColor);
+void SmartLEDInit(struct SmartLED* pSmartLed, struct ColorRGB uColor);
 
 /* Set the color of a smart led instance */
-void SmartLEDSetColor(SmartLED* pSmartLed, ColorRGB uColor);
+void SmartLEDSetColor(struct SmartLED* pSmartLed, struct ColorRGB uColor);
 
 /* Get the color of a smart led instance */
-ColorRGB SmartLEDGetColor(SmartLED* pSmartLed);
+ColorRGB SmartLEDGetColor(struct SmartLED* pSmartLed);
 
 /* Call this function continously in a loop or interrupt.
 The smartled module must continuously send color commands

@@ -19,7 +19,7 @@ bool initialized = false;
 The first led to be initialized will be the first led in the chain,
 the next led to be initialized will be the next led in the chain,
 and so on. */
-void SmartLEDInit(SmartLED* pSmartLed, ColorRGB uColor){
+void SmartLEDInit(struct SmartLED* pSmartLed, struct ColorRGB uColor){
 	
 	if(!initialized){ //initialize the linked list on first call
 		LinkedListCreate(led_list, sizeof(SmartLED), NULL, NULL);
@@ -32,12 +32,12 @@ void SmartLEDInit(SmartLED* pSmartLed, ColorRGB uColor){
 }
 
 /* Set the color of a smart led instance */
-void SmartLEDSetColor(SmartLED* pSmartLed, ColorRGB uColor){
+void SmartLEDSetColor(struct SmartLED* pSmartLed, struct ColorRGB uColor){
 	(*pSmartLed).uColor = uColor;
 }
 
 /* Get the color of a smart led instance */
-ColorRGB SmartLEDGetColor(SmartLED* pSmartLed){
+ColorRGB SmartLEDGetColor(struct SmartLED* pSmartLed){
 	return (*pSmartLed).uColor;
 }
 
@@ -50,8 +50,8 @@ and forwards subsequent bytes to next led in chain.
 */
 void SmartLEDProcess(void){
 	node* pNode;
-	SmartLED* pLed;
-	ColorRGB* pColor;
+	struct SmartLED* pLed;
+	struct ColorRGB* pColor;
 	char sMsg[2];
 	
 	//Set uart baud rate to 115200
