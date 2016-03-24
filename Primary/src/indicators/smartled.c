@@ -22,13 +22,13 @@ and so on. */
 void SmartLEDInit(struct SmartLED* pSmartLed, struct ColorRGB uColor){
 	
 	if(!initialized){ //initialize the linked list on first call
-		LinkedListCreate(led_list, sizeof(SmartLED), NULL, NULL);
+		LinkedListCreate(&led_list, sizeof(SmartLED), NULL, NULL);
 		initialized = true;
 	}
 	
 	(*pSmartLed).uColor = uColor; //set the color of the led
 	
-	LinkedListInsert(led_list, pSmartLed); //insert the led into the linked list
+	LinkedListInsert(&led_list, pSmartLed); //insert the led into the linked list
 }
 
 /* Set the color of a smart led instance */
