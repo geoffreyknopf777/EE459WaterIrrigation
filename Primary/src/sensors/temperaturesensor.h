@@ -8,6 +8,8 @@
 #ifndef TEMPERATURESENSOR_H
 #define TEMPERATURESENSOR_H
 
+#include <inttypes.h>
+
 /* Initialize the temperature sensor module */
 void TemperatureSensorInit(volatile uint8_t* pPORTSet, volatile unsigned char* pPINSet, unsigned char cAnInSet);
 
