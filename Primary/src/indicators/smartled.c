@@ -58,16 +58,16 @@ void SmartLEDProcess(void){
 	UARTInit(115200);
 	
 	//Loop over each element of the led linked list
-	pNode = led_list->pHead
+	pNode = led_list.pHead;
 	
 	while(pNode != NULL){
 		pLed = (SmartLED*)(pNode->pData);
 		pColor = &pLed->uColor;
-		sprintf("%c", pColor->cRed);
+		sprintf(sMsg, "%c", pColor->cRed);
 		UARTSend(sMsg); //send red byte
-		sprintf("%c", pColor->cGreen);
+		sprintf(sMsg, "%c", pColor->cGreen);
 		UARTSend(sMsg); //send green byte
-		sprintf("%c", pColor->cBlue);
+		sprintf(sMsg, "%c", pColor->cBlue);
 		UARTSend(sMsg); //send blue byte
 		
 		pNode = pNode->pNext;
