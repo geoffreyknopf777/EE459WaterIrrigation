@@ -13,6 +13,7 @@
 #include "uart.h"
 #include "temperaturesensor.h"
 #include "smartled.h"
+#include "timer.h"
 #include "test.h"
 
 #define MAX_MSG_LEN 256
