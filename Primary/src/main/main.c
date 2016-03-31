@@ -29,21 +29,36 @@ struct SmartLED uLed;
 void Init(void){
 	int nBaudRate = 9600;
 	UARTInit(nBaudRate); //initialize the uart module
-	TemperatureSensorInit(&DDRC, &PORTC, 0);
+	//TemperatureSensorInit(&DDRC, &PORTC, 0);
+	
+	//Sprinkler init outputs
+	SetBits(DDRB, 0, 1);
+	SetBits(DDRD, 7, 1);
 }
 
 int main(void)
 {
-	int nMsgLen;
-	char sMsg[254];
-	unsigned char degreesCelsius;
+	//int nMsgLen;
+	//char sMsg[254];
+	//unsigned char degreesCelsius;
 	
 	Init();
 	
 	while(1){
-		degreesCelsius = TemperatureSensorReadC();
-		sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelsius);
-		UARTSend(sMsg);
+		
+		SetBits(PORTB, 0, 1);
+		SetBits(PORTD, 7, 1);
+	
+		delay_ms(1000);
+	
+		SetBits(PORTB, 0, 0);
+		SetBits(PORTD, 7, 0);	
+		
+		delay_ms(1000);
+		
+		//degreesCelsius = TemperatureSensorReadC();
+		//sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelsius);
+		//UARTSend(sMsg);
 	}
   
 	return 0;   /* never reached */
