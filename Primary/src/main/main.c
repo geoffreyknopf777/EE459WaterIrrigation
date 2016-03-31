@@ -50,15 +50,12 @@ int main(void)
 		SetBits(PORTB, 0, 1);
 		SetBits(PORTD, 7, 1);
 	
-		for(int i=0; i<65000; i++){}
+		delay_ms(1000);
 	
-		//delay_ms(1000);
-	
-		SetBits(PORTB, 0, 0);
-		SetBits(PORTD, 7, 0);	
+		ClearBits(PORTB, 0, 1);
+		ClearBits(PORTD, 7, 1);	
 		
-		for(int i=0; i<65000; i++){}
-		//delay_ms(1000);
+		delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		//sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelsius);
