@@ -52,14 +52,19 @@ int main(void)
 		//ValvesTurnOn0();
 		//ValvesTurnOn1();
 	
-		delay_ms(1000);
+		//delay_ms(1000);
 	
 		//ValvesTurnOff0();
 		//ValvesTurnOff1();
 		
-		delay_ms(1000);
+		//delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
+		
+		for(int i=0; i<8; i++){
+			UARTMuxSelect((char)i);
+			delay_ms(1000);
+		}
 		
 		UARTMuxSelect(UART_MUX_COMPUTER);
 		sprintf(sMsg, "hello\r\n");
