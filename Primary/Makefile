@@ -65,7 +65,7 @@ flash:	all
 	$(AVRDUDE) -U flash:w:$(BUILD_DIR)/main.hex:i
 	
 	#open up a uart terminal
-	osascript -e 'tell app "Terminal" do script "./uart_terminal.sh" end tell'
+	echo screen $(ls /dev/tty.usb*) 9600 > uart.command; chmod +x uart.command; open uart.command
 
 fuse:
 	$(AVRDUDE) $(FUSES)
