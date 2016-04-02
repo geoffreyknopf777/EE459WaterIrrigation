@@ -49,13 +49,13 @@ int main(void)
 	
 	while(1){
 		
-		ValvesTurnOn0();
-		ValvesTurnOn1();
+		//ValvesTurnOn0();
+		//ValvesTurnOn1();
 	
 		delay_ms(1000);
 	
-		ValvesTurnOff0();
-		ValvesTurnOff1();
+		//ValvesTurnOff0();
+		//ValvesTurnOff1();
 		
 		delay_ms(1000);
 		
