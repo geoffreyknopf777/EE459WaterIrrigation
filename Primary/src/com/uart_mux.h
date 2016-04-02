@@ -36,8 +36,8 @@ void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, un
 	pPORT_S1 = pPORT_S1Set;
 	pPORT_S2 = pPORT_S2Set;
 	nPinNum_S0 = nPinNum_S0Set;
-	nPinNum_S0 = nPinNum_S0Set;
-	nPinNum_S0 = nPinNum_S0Set;
+	nPinNum_S1 = nPinNum_S1Set;
+	nPinNum_S2 = nPinNum_S2Set;
 	
 	//initialize the select bit outputs
 	SetBits(*pDDR_S0Set, nPinNum_S0, 1);
