@@ -26,7 +26,7 @@ unsigned char nPinNum_S1;
 unsigned char nPinNum_S2;
 
 //Initialize the 8 channel mux/demux with 3 select pins
-UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigned char nPinNum_S0Set,
+void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigned char nPinNum_S0Set,
 						volatile uint8_t* pDDR_S1Set, volatile uint8_t* pPORT_S1Set, unsigned char nPinNum_S1Set,
 						volatile uint8_t* pDDR_S2Set, volatile uint8_t* pPORT_S2Set, unsigned char nPinNum_S2Set
 						){
@@ -50,7 +50,7 @@ UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigne
 	SetBits(*pPORT_S2, nPinNum_S2, 0);
 }
 
-UARTMuxSelect(char cSelectChan){
+void UARTMuxSelect(char cSelectChan){
 	if(GetBit(cSelectChan, 0)){
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
