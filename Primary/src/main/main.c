@@ -11,6 +11,7 @@
 #include <string.h>
 #include "macros.h"
 #include "uart.h"
+#include "uart_mux.h"
 #include "temperaturesensor.h"
 #include "smartled.h"
 #include "valves.h"
@@ -30,17 +31,18 @@ struct SmartLED uLed;
 
 void Init(void){
 	int nBaudRate = 9600;
-	UARTInit(nBaudRate); //initialize the uart module
+	UARTInit(nBaudRate); //uart init
+	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	//TemperatureSensorInit(&DDRC, &PORTC, 0);
 	
-	//Sprinkler init outputs
-	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7);
+	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
+	
 }
 
 int main(void)
 {
-	//int nMsgLen;
-	//char sMsg[254];
+	int nMsgLen;
+	char sMsg[254];
 	//unsigned char degreesCelsius;
 	
 	Init();
@@ -58,8 +60,10 @@ int main(void)
 		delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
-		//sprintf(sMsg, "degrees Celcius: %c\r\n", degreesCelsius);
-		//UARTSend(sMsg);
+		
+		UARTMuxSelect(UART_MUX_COMPUTER);
+		sprintf(sMsg, "hello\r\n");
+		UARTSend(sMsg);
 	}
   
 	return 0;   /* never reached */
