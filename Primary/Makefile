@@ -64,8 +64,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 flash:	all
 	$(AVRDUDE) -U flash:w:$(BUILD_DIR)/main.hex:i
 	
-	#open up an xterm screen
-	osascript -e $(screen $(ls /dev/tty.usb*) 9600)
+	#open up a uart terminal
+	osascript -e 'tell app "Terminal"
+    do script "screen $(ls /dev/tty.usb*) 9600"
+	end tell'
 
 fuse:
 	$(AVRDUDE) $(FUSES)
