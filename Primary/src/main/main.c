@@ -61,8 +61,8 @@ int main(void)
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
-		for(int i=0; i<8; i++){
-			UARTMuxSelect((char)i);
+		for(char i=0; i<8; i++){
+			UARTMuxSelect(i);
 			delay_ms(1000);
 		}
 		
