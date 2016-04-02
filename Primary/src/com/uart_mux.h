@@ -51,9 +51,24 @@ UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigne
 }
 
 UARTMuxSelect(char cSelectChan){
-	SetBits(*pPORT_S0, nPinNum_S0, GetBit(cSelectChan, 0));
-	SetBits(*pPORT_S1, nPinNum_S1, GetBit(cSelectChan, 1));
-	SetBits(*pPORT_S2, nPinNum_S2, GetBit(cSelectChan, 2));
+	if(GetBit(cSelectChan, 0)){
+		SetBits(*pPORT_S0, nPinNum_S0, 1);
+	}
+	else{
+		ClearBits(*pPORT_S0, nPinNum_S0, 1);
+	}
+	if(GetBit(cSelectChan, 1)){
+		SetBits(*pPORT_S1, nPinNum_S1, 1);
+	}
+	else{
+		ClearBits(*pPORT_S1, nPinNum_S1, 1);
+	}
+	if(GetBit(cSelectChan, 2)){
+		SetBits(*pPORT_S2, nPinNum_S2, 1);
+	}
+	else{
+		ClearBits(*pPORT_S2, nPinNum_S2, 1);
+	}
 }
 
 #endif /* UART_MUX_H */

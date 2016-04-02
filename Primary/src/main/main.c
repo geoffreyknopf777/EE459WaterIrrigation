@@ -13,6 +13,7 @@
 #include "uart.h"
 #include "temperaturesensor.h"
 #include "smartled.h"
+#include "valves.h"
 #include "timer.h"
 #include "test.h"
 
@@ -33,8 +34,7 @@ void Init(void){
 	//TemperatureSensorInit(&DDRC, &PORTC, 0);
 	
 	//Sprinkler init outputs
-	SetBits(DDRB, 0, 1);
-	SetBits(DDRD, 7, 1);
+	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7);
 }
 
 int main(void)
@@ -47,13 +47,13 @@ int main(void)
 	
 	while(1){
 		
-		SetBits(PORTB, 0, 1);
-		SetBits(PORTD, 7, 1);
+		ValvesTurnOn0();
+		ValvesTurnOn1();
 	
 		delay_ms(1000);
 	
-		ClearBits(PORTB, 0, 1);
-		ClearBits(PORTD, 7, 1);	
+		ValvesTurnOff0();
+		ValvesTurnOff1();
 		
 		delay_ms(1000);
 		
