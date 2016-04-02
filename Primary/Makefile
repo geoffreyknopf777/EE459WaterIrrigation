@@ -65,7 +65,7 @@ flash:	all
 	$(AVRDUDE) -U flash:w:$(BUILD_DIR)/main.hex:i
 	
 	#open up an xterm screen
-	xterm -e $(screen $(ls /dev/tty.usb*) 9600)
+	osascript -e $(screen $(ls /dev/tty.usb*) 9600)
 
 fuse:
 	$(AVRDUDE) $(FUSES)
