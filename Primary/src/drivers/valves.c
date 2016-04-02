@@ -55,5 +55,3 @@ void ValvesTurnOn1(void){
 void ValvesTurnOff1(void){
 	ClearBits(*pPORT_V1, nPinNum_V1, 1);
 }
-
-#endif /* VALVES_H */
