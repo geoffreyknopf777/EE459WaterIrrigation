@@ -65,7 +65,8 @@ flash:	all
 	$(AVRDUDE) -U flash:w:$(BUILD_DIR)/main.hex:i
 	
 	#open up a uart terminal
-	echo screen "$(ls /dev/tty.usb*)" 9600 > uart.command; chmod +x uart.command; open uart.command
+	USB = $(ls /dev/tty.usb*)
+	echo screen $(USB) 9600 > uart.command; chmod +x uart.command; open uart.command
 
 fuse:
 	$(AVRDUDE) $(FUSES)
