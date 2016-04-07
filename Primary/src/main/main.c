@@ -41,7 +41,7 @@ void Init(void){
 
 int main(void)
 {
-	int i;
+	int i = 0;
 	int nMsgLen;
 	char sMsg[254];
 	//unsigned char degreesCelsius;
@@ -54,22 +54,21 @@ int main(void)
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
-			//UARTMuxSelect(i);
-			//i++;
-			//if (i>8){
-			//	i=0;
-			//}
+		ValvesTurnOn0();
+		ValvesTurnOn1();
+		delay_ms(500);
+		
+		UARTMuxSelect(i);
+			i++;
+			if (i>8){
+				i=0;
+			}
 			
-			//RunTests();
+		ValvesTurnOff0();
+		ValvesTurnOff1();
+		delay_ms(500);
 			
-			ValvesTurnOn0();
-			delay_ms(1000);
-			ValvesTurnOn1();
-			delay_ms(1000);
-			ValvesTurnOff0();
-			delay_ms(1000);
-			ValvesTurnOff1();
-			delay_ms(1000);
+		//RunTests();
 		
 		//UARTMuxSelect(UART_MUX_COMPUTER);
 		//sprintf(sMsg, "hello\r\n");
