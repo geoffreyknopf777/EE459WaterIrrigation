@@ -54,11 +54,11 @@ int main(void)
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
-			UARTMuxSelect(i);
-			i++;
-			if (i>8){
-				i=0;
-			}
+			//UARTMuxSelect(i);
+			//i++;
+			//if (i>8){
+			//	i=0;
+			//}
 			
 			ValvesTurnOn0();
 			ValvesTurnOn1();
