@@ -31,8 +31,8 @@ void ValvesInit(volatile uint8_t* pDDR_V0Set, volatile uint8_t* pPORT_V0Set, uns
 	SetBits(*pDDR_V1Set, nPinNum_V1, 1);
 	
 	//Set the initial state as off:
-	ClearBits(*pPORT_V0, nPinNum_V0, 0);
-	ClearBits(*pPORT_V1, nPinNum_V1, 0);
+	ClearBits(*pPORT_V0, nPinNum_V0, 1);
+	ClearBits(*pPORT_V1, nPinNum_V1, 1);
 						
 }
 
@@ -43,7 +43,7 @@ void ValvesTurnOn0(void){
 
 /* Turn off the first valve */
 void ValvesTurnOff0(void){
-	ClearBits(*pPORT_V0, nPinNum_V0, 0);
+	ClearBits(*pPORT_V0, nPinNum_V0, 1);
 }
 
 /* Turn on the second valve */
@@ -53,5 +53,5 @@ void ValvesTurnOn1(void){
 
 /* Turn off the second valve */
 void ValvesTurnOff1(void){
-	ClearBits(*pPORT_V1, nPinNum_V1, 0);
+	ClearBits(*pPORT_V1, nPinNum_V1, 1);
 }

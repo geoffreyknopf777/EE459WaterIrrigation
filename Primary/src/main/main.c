@@ -65,9 +65,8 @@ int main(void)
 			
 			ValvesTurnOn0();
 			ValvesTurnOn1();
-	
-			for(i=0; i<65000; i++){}
-			//delay_ms(1000);
+
+			delay_ms(1000);
 	
 			ValvesTurnOff0();
 			ValvesTurnOff1();
