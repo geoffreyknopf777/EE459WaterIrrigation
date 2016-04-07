@@ -69,6 +69,8 @@ int main(void)
 		}
 		i++;
 			
+		delay_ms(1000);		
+		
 		//ValvesTurnOff0();
 		//ValvesTurnOff1();
 		//delay_ms(500);
