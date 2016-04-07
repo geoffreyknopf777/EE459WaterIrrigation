@@ -60,11 +60,12 @@ int main(void)
 		
 		
 		//UARTMuxSelect(i);
-		for(int j=0; j<i; j++){
+		for(int j=1; j<i+1; j++){
 			ValvesTurnOn0();
 			delay_ms(100);
 			ValvesTurnOff0();
 		}
+		i++;
 			
 		delay_ms(1000);
 			
