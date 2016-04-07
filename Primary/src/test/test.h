@@ -11,4 +11,7 @@
 /* Test all of the pins on the ATmega328P in an infinite loop */
 void TestATmega328PPins(void);
 
+/* Test the uart mux select pins */
+void TestUartMux(void);
+
 #endif /* TEST_H */
