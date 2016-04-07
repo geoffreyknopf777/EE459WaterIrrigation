@@ -59,13 +59,14 @@ int main(void)
 		//delay_ms(500);
 		
 		
-		UARTMuxSelect(i);
+		//UARTMuxSelect(i);
 		for(int j=0; j<i; j++){
 			ValvesTurnOn0();
-			delay_ms(500);
+			delay_ms(100);
 			ValvesTurnOff0();
 		}
 			
+		delay_ms(1000);
 			
 		//ValvesTurnOff0();
 		//ValvesTurnOff1();
