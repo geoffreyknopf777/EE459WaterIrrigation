@@ -32,7 +32,7 @@ struct SmartLED uLed;
 void Init(void){
 	int nBaudRate = 9600;
 	UARTInit(nBaudRate); //uart init
-	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
+	//UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	//TemperatureSensorInit(&DDRC, &PORTC, 0);
 	
 	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
@@ -60,9 +60,9 @@ int main(void)
 			//	i=0;
 			//}
 			
-			RunTests();
+			//RunTests();
 			
-			/*
+			
 			ValvesTurnOn0();
 			ValvesTurnOn1();
 	
@@ -75,7 +75,7 @@ int main(void)
 		//UARTMuxSelect(UART_MUX_COMPUTER);
 		//sprintf(sMsg, "hello\r\n");
 		//UARTSend(sMsg);
-		*/
+		
 	}
   
 	return 0;   /* never reached */
