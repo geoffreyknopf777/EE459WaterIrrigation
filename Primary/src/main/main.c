@@ -58,17 +58,19 @@ int main(void)
 		//ValvesTurnOn1();
 		//delay_ms(500);
 		
+		/*
 		UARTMuxSelect(i);
 			i++;
 			if (i>8){
 				i=0;
 			}
+			*/
 			
 		//ValvesTurnOff0();
 		//ValvesTurnOff1();
 		//delay_ms(500);
 			
-		//RunTests();
+		RunTests();
 		
 		//UARTMuxSelect(UART_MUX_COMPUTER);
 		//sprintf(sMsg, "hello\r\n");
