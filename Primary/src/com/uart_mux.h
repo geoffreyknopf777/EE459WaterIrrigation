@@ -9,6 +9,7 @@
 #define UART_MUX_H
 
 #include <inttypes.h>
+#include "valves.h"
 #include "macros.h"
 
 #define UART_MUX_COMPUTER   0
@@ -58,6 +59,9 @@ void UARTMuxSelect(char cSelectChan){
 	
 	//select 0
 	if(GetBit(cSelectChan, 0)){
+		ValvesTurnOn0();
+		delay_ms(500);
+		ValvesTurnOff0();
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	else{
