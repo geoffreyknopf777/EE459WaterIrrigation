@@ -9,9 +9,6 @@
 #define UART_MUX_H
 
 #include <inttypes.h>
-#include "valves.h"
-#include "timer.h"
-#include "macros.h"
 
 #define UART_MUX_COMPUTER   0
 #define UART_MUX_INTERNET   1
