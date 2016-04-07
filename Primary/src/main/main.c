@@ -66,7 +66,9 @@ int main(void)
 		ClearBits(PORTD, 4, 1);
 		ClearBits(PORTD, 5, 1);
 		ClearBits(PORTD, 6, 1);
+		delay_ms(100);
 		
+		/*
 		delay_ms(1000);
 		for(int j=1; j<i+1; j++){
 			ValvesTurnOn0();
@@ -77,6 +79,7 @@ int main(void)
 		i++;
 			
 		delay_ms(1000);		
+		*/
 		
 		//ValvesTurnOff0();
 		//ValvesTurnOff1();
