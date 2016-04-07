@@ -58,10 +58,9 @@ int main(void)
 		//ValvesTurnOn1();
 		//delay_ms(500);
 		
-		UARTMuxSelect(0);
+		UARTMuxSelect(i);
 		delay_ms(1000);
-		UARTMuxSelect(1);
-		delay_ms(1000);
+		i++;
 		
 		
 		/*
