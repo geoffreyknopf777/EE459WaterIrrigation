@@ -9,6 +9,7 @@
 #include "timer.h"
 #include "uart_mux.h"
 #include "macros.h"
+#include "test.h"
 
 #define MS_DELAY 2
 
