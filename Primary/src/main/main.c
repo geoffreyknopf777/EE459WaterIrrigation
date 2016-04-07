@@ -63,7 +63,7 @@ int main(void)
 		
 		for(char i=0; i<8; i++){
 			UARTMuxSelect(i);
-			delay_ms(1000);
+			delay_ms(1);
 		}
 		
 		UARTMuxSelect(UART_MUX_COMPUTER);
