@@ -30,9 +30,9 @@ void RunTests(void){
 struct SmartLED uLed;
 
 void Init(void){
-	int nBaudRate = 9600;
-	UARTInit(nBaudRate); //uart init
-	//UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
+	//int nBaudRate = 9600;
+	//UARTInit(nBaudRate); //uart init
+	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	//TemperatureSensorInit(&DDRC, &PORTC, 0);
 	
 	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
