@@ -57,20 +57,20 @@ void UARTMuxSelect(unsigned char cSelectChan){
 	//select 0
 	if(GetBit(cSelectChan, 0)){
 		ValvesTurnOn0();
-		delay_ms(100);
+		delay_ms(1);
 		ValvesTurnOff0();
-		delay_ms(100);
+		delay_ms(1);
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	else{
 		ValvesTurnOn0();
-		delay_ms(100);
+		delay_ms(1);
 		ValvesTurnOff0();
-		delay_ms(100);
+		delay_ms(1);
 		ValvesTurnOn0();
-		delay_ms(100);
+		delay_ms(1);
 		ValvesTurnOff0();
-		delay_ms(100);
+		delay_ms(1);
 		ClearBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	
