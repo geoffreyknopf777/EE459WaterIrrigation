@@ -43,7 +43,7 @@ void ValvesTurnOn0(void){
 
 /* Turn off the first valve */
 void ValvesTurnOff0(void){
-	ClearBits(*pPORT_V0, nPinNum_V0, 1);
+	ClearBits(*pPORT_V0, nPinNum_V0, 0);
 }
 
 /* Turn on the second valve */
@@ -53,5 +53,5 @@ void ValvesTurnOn1(void){
 
 /* Turn off the second valve */
 void ValvesTurnOff1(void){
-	ClearBits(*pPORT_V1, nPinNum_V1, 1);
+	ClearBits(*pPORT_V1, nPinNum_V1, 0);
 }
