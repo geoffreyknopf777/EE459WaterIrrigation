@@ -60,10 +60,11 @@ int main(void)
 		
 		
 		UARTMuxSelect(i);
-			i++;
-			if (i>8){
-				i=0;
-			}
+		for(int j=0; j<i; j++){
+			ValvesTurnOn0();
+			delay_ms(500);
+			ValvesTurnOff0();
+		}
 			
 			
 		//ValvesTurnOff0();
