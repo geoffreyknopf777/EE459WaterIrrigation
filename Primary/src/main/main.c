@@ -63,13 +63,13 @@ int main(void)
 			//RunTests();
 			
 			ValvesTurnOn0();
-			delay_ms(100);
+			delay_ms(1000);
 			ValvesTurnOn1();
-			delay_ms(100);
+			delay_ms(1000);
 			ValvesTurnOff0();
-			delay_ms(100);
+			delay_ms(1000);
 			ValvesTurnOff1();
-			delay_ms(100);
+			delay_ms(1000);
 		
 		//UARTMuxSelect(UART_MUX_COMPUTER);
 		//sprintf(sMsg, "hello\r\n");
