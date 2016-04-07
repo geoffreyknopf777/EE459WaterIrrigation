@@ -61,7 +61,7 @@ void UARTMuxSelect(char cSelectChan){
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	else{
-		ClearBits(*pPORT_S0, nPinNum_S0, 0);
+		ClearBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	
 	//select 1
@@ -69,7 +69,7 @@ void UARTMuxSelect(char cSelectChan){
 		SetBits(*pPORT_S1, nPinNum_S1, 1);
 	}
 	else{
-		ClearBits(*pPORT_S1, nPinNum_S1, 0);
+		ClearBits(*pPORT_S1, nPinNum_S1, 1);
 	}
 	
 	//select 2
@@ -77,7 +77,7 @@ void UARTMuxSelect(char cSelectChan){
 		SetBits(*pPORT_S2, nPinNum_S2, 1);
 	}
 	else{
-		ClearBits(*pPORT_S2, nPinNum_S2, 0);
+		ClearBits(*pPORT_S2, nPinNum_S2, 1);
 	}
 }
 
