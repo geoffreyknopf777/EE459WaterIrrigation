@@ -48,7 +48,7 @@ void TestATmega328PPins(void){
 }
 
 void TestUartMux(void){
-	int i=0;
+	unsigned char i=0;
 	
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	
