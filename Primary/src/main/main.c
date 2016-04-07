@@ -49,21 +49,20 @@ int main(void)
 	
 	while(1){
 		
-		//ValvesTurnOn0();
-		//ValvesTurnOn1();
-	
-		//delay_ms(1000);
-	
-		//ValvesTurnOff0();
-		//ValvesTurnOff1();
-		
 		//delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
 		for(char i=0; i<8; i++){
 			UARTMuxSelect(i);
-			delay_ms(1);
+			
+			ValvesTurnOn0();
+			ValvesTurnOn1();
+	
+			delay_ms(1000);
+	
+			ValvesTurnOff0();
+			ValvesTurnOff1();
 		}
 		
 		UARTMuxSelect(UART_MUX_COMPUTER);
