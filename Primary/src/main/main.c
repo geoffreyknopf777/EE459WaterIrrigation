@@ -62,6 +62,7 @@ int main(void)
 		SetBits(PORTD, 4, 1);
 		SetBits(PORTD, 5, 1);
 		SetBits(PORTD, 6, 1);
+		delay_ms(100);
 		ClearBits(PORTD, 4, 1);
 		ClearBits(PORTD, 5, 1);
 		ClearBits(PORTD, 6, 1);
