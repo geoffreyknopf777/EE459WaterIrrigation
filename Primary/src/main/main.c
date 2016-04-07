@@ -60,6 +60,9 @@ int main(void)
 			//	i=0;
 			//}
 			
+			RunTests();
+			
+			/*
 			ValvesTurnOn0();
 			ValvesTurnOn1();
 	
@@ -72,6 +75,7 @@ int main(void)
 		//UARTMuxSelect(UART_MUX_COMPUTER);
 		//sprintf(sMsg, "hello\r\n");
 		//UARTSend(sMsg);
+		*/
 	}
   
 	return 0;   /* never reached */
