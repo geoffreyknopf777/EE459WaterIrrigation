@@ -58,8 +58,14 @@ int main(void)
 		//ValvesTurnOn1();
 		//delay_ms(500);
 		
+		//UARTMuxSelect(i);
+		SetBits(PORTD, 4, 1);
+		SetBits(PORTD, 5, 1);
+		SetBits(PORTD, 6, 1);
+		ClearBits(PORTD, 4, 1);
+		ClearBits(PORTD, 5, 1);
+		ClearBits(PORTD, 6, 1);
 		
-		UARTMuxSelect(i);
 		delay_ms(1000);
 		for(int j=1; j<i+1; j++){
 			ValvesTurnOn0();
