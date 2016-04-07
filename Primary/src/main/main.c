@@ -54,9 +54,9 @@ int main(void)
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
-		ValvesTurnOn0();
-		ValvesTurnOn1();
-		delay_ms(500);
+		//ValvesTurnOn0();
+		//ValvesTurnOn1();
+		//delay_ms(500);
 		
 		UARTMuxSelect(i);
 			i++;
@@ -64,9 +64,9 @@ int main(void)
 				i=0;
 			}
 			
-		ValvesTurnOff0();
-		ValvesTurnOff1();
-		delay_ms(500);
+		//ValvesTurnOff0();
+		//ValvesTurnOff1();
+		//delay_ms(500);
 			
 		//RunTests();
 		
