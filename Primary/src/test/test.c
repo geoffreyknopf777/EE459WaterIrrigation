@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #include "timer.h"
 #include "macros.h"
-#include "uart_mux.h"
+//#include "uart_mux.h"
 #include "test.h"
 
 #define MS_DELAY 2
