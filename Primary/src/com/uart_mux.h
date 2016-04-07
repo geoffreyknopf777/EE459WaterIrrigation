@@ -53,16 +53,24 @@ void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, un
 }
 
 void UARTMuxSelect(unsigned char cSelectChan){
-	SetBits(*pPORT_S0, nPinNum_S0, 1);
-	ClearBits(*pPORT_S1, nPinNum_S1, 1);
-	ClearBits(*pPORT_S2, nPinNum_S2, 1);
-	return;
 	
 	//select 0
 	if(GetBit(cSelectChan, 0)){
+		ValvesTurnOn0();
+		delay_ms(500);
+		ValvesTurnOff0();
+		delay_ms(500);
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	else{
+		ValvesTurnOn0();
+		delay_ms(500);
+		ValvesTurnOff0();
+		delay_ms(500);
+		ValvesTurnOn0();
+		delay_ms(500);
+		ValvesTurnOff0();
+		delay_ms(500);
 		ClearBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	

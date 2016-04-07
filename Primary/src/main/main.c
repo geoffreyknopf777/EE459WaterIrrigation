@@ -59,8 +59,9 @@ int main(void)
 		//delay_ms(500);
 		
 		UARTMuxSelect(0);
-		delay_ms(100);
+		delay_ms(1000);
 		UARTMuxSelect(1);
+		delay_ms(1000);
 		
 		
 		/*
