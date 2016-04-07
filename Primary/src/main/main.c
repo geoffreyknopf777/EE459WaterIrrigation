@@ -50,6 +50,8 @@ int main(void)
 	
 	while(1){
 		
+		TestUartMux();
+		
 		//delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
@@ -58,9 +60,9 @@ int main(void)
 		//ValvesTurnOn1();
 		//delay_ms(500);
 		
-		UARTMuxSelect(i);
-		delay_ms(1);
-		i++;
+		//UARTMuxSelect(i);
+		//delay_ms(1);
+		//i++;
 		
 		
 		/*

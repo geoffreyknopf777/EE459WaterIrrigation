@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include "timer.h"
+#include "uart_mux.h"
 #include "macros.h"
 
 #define MS_DELAY 2
@@ -44,4 +45,14 @@ void TestATmega328PPins(void){
 			}
 			
     }	
+}
+
+TestUartMux(){
+	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
+	
+	while(1){
+		UARTMuxSelect(i);
+		delay_ms(1);
+		i++;
+	}
 }
