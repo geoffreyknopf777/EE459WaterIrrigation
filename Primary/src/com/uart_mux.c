@@ -15,14 +15,14 @@
 #define UART_MUX_SMART_LED  2
 	
 //PORT pointers						
-volatile uint8_t* pPORT_S0;
-volatile uint8_t* pPORT_S1;
-volatile uint8_t* pPORT_S2;						
+static volatile uint8_t* pPORT_S0;
+static volatile uint8_t* pPORT_S1;
+static volatile uint8_t* pPORT_S2;						
 						
 //Pin numbers
-unsigned char nPinNum_S0;
-unsigned char nPinNum_S1;
-unsigned char nPinNum_S2;
+static unsigned char nPinNum_S0;
+static unsigned char nPinNum_S1;
+static unsigned char nPinNum_S2;
 
 //Initialize the 8 channel mux/demux with 3 select pins
 void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigned char nPinNum_S0Set,

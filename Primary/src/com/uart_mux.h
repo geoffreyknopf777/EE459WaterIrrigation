@@ -18,11 +18,10 @@
 #define UART_MUX_SMART_LED  2
 
 //Initialize the 8 channel mux/demux with 3 select pins
-void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, unsigned char nPinNum_S0Set,
-						volatile uint8_t* pDDR_S1Set, volatile uint8_t* pPORT_S1Set, unsigned char nPinNum_S1Set,
-						volatile uint8_t* pDDR_S2Set, volatile uint8_t* pPORT_S2Set, unsigned char nPinNum_S2Set
-						);
+void UARTMuxInit(volatile uint8_t*, volatile uint8_t*, unsigned char,
+						volatile uint8_t*, volatile uint8_t*, unsigned char,
+						volatile uint8_t*, volatile uint8_t*, unsigned char);
 
-void UARTMuxSelect(unsigned char cSelectChan);
+void UARTMuxSelect(unsigned char);
 
 #endif /* UART_MUX_H */
