@@ -11,7 +11,7 @@
 #include <stdbool.h>
 
 /* Initialize the proximity sensor module */
-void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set, volatile uint8_t* pPIN_Set unsigned char nPinNum_Set);
+void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set, volatile uint8_t* pPIN_Set, unsigned char nPinNum_Set);
 
 /* Detect whether in range */
 bool ProximitySensorInRange(void);
