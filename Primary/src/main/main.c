@@ -13,11 +13,13 @@
 #include "uart.h"
 #include "uart_mux.h"
 #include "temperaturesensor.h"
+#include "proximitysensor.h"
 #include "smartled.h"
-#include "valves.h"
+#include "relay.h"
 #include "timer.h"
 #include "test.h"
 
+#define UART_BAUD_RATE 9600
 #define MAX_MSG_LEN 256
 
 char sSendMsg[MAX_MSG_LEN]; //send buffer
@@ -30,13 +32,11 @@ void RunTests(void){
 struct SmartLED uLed;
 
 void Init(void){
-	//int nBaudRate = 9600;
-	//UARTInit(nBaudRate); //uart init
+	UARTInit(UART_BUAD_RATE); //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
-	//TemperatureSensorInit(&DDRC, &PORTC, 0);
-	
-	ValvesInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
-	
+	TemperatureSensorInit(&DDRC, &PORTC, 0); //temperature sensor init
+	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2); //proximity sensor init
+	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
 }
 
 int main(void)
@@ -56,8 +56,8 @@ int main(void)
 		
 		//degreesCelsius = TemperatureSensorReadC();
 		
-		//ValvesTurnOn0();
-		//ValvesTurnOn1();
+		//RelayTurnOn0();
+		//RelayTurnOn1();
 		//delay_ms(500);
 		
 		//UARTMuxSelect(i);
@@ -79,9 +79,9 @@ int main(void)
 		/*
 		delay_ms(1000);
 		for(int j=1; j<i+1; j++){
-			ValvesTurnOn0();
+			RelayTurnOn0();
 			delay_ms(100);
-			ValvesTurnOff0();
+			RelayTurnOff0();
 			delay_ms(100);
 		}
 		i++;
@@ -89,8 +89,8 @@ int main(void)
 		delay_ms(1000);		
 		*/
 		
-		//ValvesTurnOff0();
-		//ValvesTurnOff1();
+		//RelayTurnOff0();
+		//RelayTurnOff1();
 		//delay_ms(500);
 			
 		//RunTests();
@@ -99,6 +99,10 @@ int main(void)
 		//sprintf(sMsg, "hello\r\n");
 		//UARTSend(sMsg);
 		
+		
+		//if(ProximitySensorInRange()){
+			//code gets here if the proximity sensor is in range
+		//}
 	}
   
 	return 0;   /* never reached */
