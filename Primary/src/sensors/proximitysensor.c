@@ -5,7 +5,6 @@
 *proximitysensor.c
 *************************************************/
 
-#include <avr/stdbool.h>
 #include "proximitysensor.h"
 
 volatile uint8_t* pPIN;

@@ -8,7 +8,7 @@
 #ifndef PROXIMITYSENSOR_H
 #define PROXIMITYSENSOR_H
 
-#include <avr/stdbool.h>
+#include <stdbool.h>
 
 /* Initialize the proximity sensor module */
 void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set, unsigned char nPinNum_Set);
