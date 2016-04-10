@@ -32,7 +32,7 @@ void RunTests(void){
 struct SmartLED uLed;
 
 void Init(void){
-	UARTInit(UART_BUAD_RATE); //uart init
+	UARTInit(UART_BAUD_RATE); //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	TemperatureSensorInit(&DDRC, &PORTC, 0); //temperature sensor init
 	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2); //proximity sensor init
@@ -42,8 +42,8 @@ void Init(void){
 int main(void)
 {
 	unsigned char i = 0;
-	int nMsgLen;
-	char sMsg[254];
+	//int nMsgLen;
+	//char sMsg[254];
 	//unsigned char degreesCelsius;
 	
 	Init();
