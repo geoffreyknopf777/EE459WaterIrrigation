@@ -6,7 +6,7 @@
 *************************************************/
 
 #include <inttypes.h>
-#include "valves.h"
+#include "relay.h"
 #include "timer.h"
 #include "macros.h"
 #include "uart_mux.h"

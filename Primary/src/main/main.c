@@ -36,7 +36,7 @@ void Init(void){
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	TemperatureSensorInit(&DDRC, &PORTC, 0); //temperature sensor init
 	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2); //proximity sensor init
-	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler valve init
+	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler relay init
 }
 
 int main(void)
