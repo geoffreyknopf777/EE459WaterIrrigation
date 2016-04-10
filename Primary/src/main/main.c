@@ -50,7 +50,7 @@ int main(void)
 	
 	while(1){
 		
-		TestUartMux();
+		//TestUartMux();
 		
 		//delay_ms(1000);
 		
@@ -100,9 +100,13 @@ int main(void)
 		//UARTSend(sMsg);
 		
 		
-		//if(ProximitySensorInRange()){
+		if(ProximitySensorInRange()){
 			//code gets here if the proximity sensor is in range
-		//}
+			RelayTurnOn0();
+		}
+		else{
+			RelayTurnOff0();
+		}
 	}
   
 	return 0;   /* never reached */
