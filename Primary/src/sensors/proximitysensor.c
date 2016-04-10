@@ -5,6 +5,7 @@
 *proximitysensor.c
 *************************************************/
 
+#include "macros.h"
 #include "proximitysensor.h"
 
 volatile uint8_t* pPIN;
