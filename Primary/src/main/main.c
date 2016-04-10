@@ -105,7 +105,7 @@ int main(void)
 		
 		if(ProximitySensorInRange()){
 			//code gets here if the proximity sensor is in range
-			LedBlink(&uTestLed, 10);
+			LedBlink(&uTestLed, 50);
 			RelayTurnOn0();
 		}
 		else{
