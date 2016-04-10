@@ -24,5 +24,3 @@ void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set
 bool ProximitySensorInRange(void){
 	return (bool)GetBit(*pPIN, nPinNum);
 }
-
-#endif /* PROXIMITYSENSOR_H */
