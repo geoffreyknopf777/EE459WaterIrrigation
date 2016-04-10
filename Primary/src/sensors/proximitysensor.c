@@ -8,8 +8,8 @@
 #include "macros.h"
 #include "proximitysensor.h"
 
-volatile uint8_t* pPIN;
-unsigned char nPinNum;
+static volatile uint8_t* pPIN;
+static unsigned char nPinNum;
 
 /* Initialize the proximity sensor module */
 void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set, volatile uint8_t* pPIN_Set, unsigned char nPinNum_Set){

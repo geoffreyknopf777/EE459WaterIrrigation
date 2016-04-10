@@ -14,7 +14,7 @@
 
 #define CLK_RATE 16000000 //processor clock rate in MHz
 
-int nTicks;
+static int nTicks;
 
 //Define arrays for relevant registers:
 volatile uint8_t* aTCCRA[] = {&TCCR0A, &TCCR1A, &TCCR2A}; //pwm upper threshold

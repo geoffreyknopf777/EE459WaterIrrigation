@@ -9,12 +9,12 @@
 #include "relay.h"
 
 //PORT pointers						
-volatile uint8_t* pPORT_R0;
-volatile uint8_t* pPORT_R1;					
+static volatile uint8_t* pPORT_R0;
+static volatile uint8_t* pPORT_R1;					
 						
 //Pin numbers
-unsigned char nPinNum_R0;
-unsigned char nPinNum_R1;
+static unsigned char nPinNum_R0;
+static unsigned char nPinNum_R1;
 
 /* Initialize the relay module */
 void RelayInit(volatile uint8_t* pDDR_R0Set, volatile uint8_t* pPORT_R0Set, unsigned char nPinNum_R0Set,
