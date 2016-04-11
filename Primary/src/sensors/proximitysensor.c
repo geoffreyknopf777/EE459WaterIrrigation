@@ -19,8 +19,8 @@ void ProximitySensorInit(volatile uint8_t* pDDR_Set, volatile uint8_t* pPORT_Set
 	//set pin as input
 	ClearBits(*pDDR_Set, nPinNum_Set, 1);
 	
-	//disable the pull-up resistor
-	ClearBits(*pPORT_Set, nPinNum_Set, 1);
+	//enable the pull-up resistor
+	SetBits(*pPORT_Set, nPinNum_Set, 1);
 }
 
 /* Detect whether in range */
