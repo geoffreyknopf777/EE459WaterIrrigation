@@ -45,8 +45,8 @@ void Init(void){
 int main(void)
 {
 	unsigned char i = 0;
-	//int nMsgLen;
-	//char sMsg[254];
+	int nMsgLen;
+	char sMsg[254];
 	//unsigned char degreesCelsius;
 	
 	Init();
