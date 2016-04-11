@@ -99,10 +99,11 @@ int main(void)
 		//RunTests();
 		
 		UARTMuxSelect(UART_MUX_COMPUTER);
-		sprintf(sMsg, "hello\r\n");
+		sprintf(sMsg, "a\r\n");
 		UARTSend(sMsg);
 		
-		
+		/*
+		//Proximity sensor code
 		if(ProximitySensorInRange()){
 			//code gets here if the proximity sensor is in range
 			LedBlink(&uTestLed, 50);
@@ -111,6 +112,7 @@ int main(void)
 		else{
 			LedBlink(&uTestLed, 2000);
 		}
+		*/
 	}
   
 	return 0;   /* never reached */
