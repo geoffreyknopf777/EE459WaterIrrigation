@@ -98,9 +98,9 @@ int main(void)
 			
 		//RunTests();
 		
-		//UARTMuxSelect(UART_MUX_COMPUTER);
-		//sprintf(sMsg, "hello\r\n");
-		//UARTSend(sMsg);
+		UARTMuxSelect(UART_MUX_COMPUTER);
+		sprintf(sMsg, "hello\r\n");
+		UARTSend(sMsg);
 		
 		
 		if(ProximitySensorInRange()){
