@@ -54,7 +54,7 @@ void TestUartMux(void){
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	
 	while(1){
-		UARTMuxSelect(i);
+		UARTMuxSetChannel(i);
 		delay_ms(1);
 		i++;
 	}
