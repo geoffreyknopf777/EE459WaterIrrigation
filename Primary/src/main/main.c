@@ -39,7 +39,7 @@ void Init(void){
 	int i;
 	
 	LedInit(&uTestLed, &DDRB, &PORTB, 1); //test led init
-	for(i=0; i<SMART_LED_NUM){
+	for(i=0; i<SMART_LED_NUM; i++){
 		SmartLEDInit(&aSmartLED[i], COLOR_RED); //smart led init
 	}
 	UARTInit(UART_BAUD_RATE); //uart init
@@ -52,8 +52,8 @@ void Init(void){
 int main(void)
 {
 	unsigned char i = 0;
-	int nMsgLen;
-	char sMsg[254];
+	//int nMsgLen;
+	//char sMsg[254];
 	//unsigned char degreesCelsius;
 	
 	Init();
