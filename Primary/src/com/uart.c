@@ -19,7 +19,7 @@
 uint32_t nBaudRate;
 
 void UARTInit(uint32_t nBaudRateSet){
-	//Set buad rate
+	//Set baud rate
 	nBaudRate = nBaudRateSet;
 	UBRR0 = (char) FOSC/16/nBaudRate-1;
 	// Enable RX and TX
@@ -29,12 +29,12 @@ void UARTInit(uint32_t nBaudRateSet){
 }
 
 /* Get the current baud rate */
-uint32_t UARTGetBuadRate(void){
+uint32_t UARTGetBaudRate(void){
 	return nBaudRate;
 }
 
 /* Set the baud rate */
-void UARTSetBuadRate(uint32_t nBaudRate){
+void UARTSetBaudRate(uint32_t nBaudRate){
 	UARTInit(nBaudRate);
 }
 

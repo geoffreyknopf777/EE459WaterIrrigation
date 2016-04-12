@@ -14,7 +14,7 @@
 #include "color.h"
 #include "smartled.h"
 
-#define SMART_LED_BUAD 115200
+#define SMART_LED_BAUD 115200
 
 linkedlist led_list;
 bool initialized = false;
@@ -64,7 +64,7 @@ void SmartLEDProcess(void){
 	oldBaud = UARTGetBaudRate();
 	oldChannel = UARTMuxGetChannel();
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
-	UARTSetBaudRate(SMART_LED_BUAD);
+	UARTSetBaudRate(SMART_LED_BAUD);
 	
 	//Loop over each element of the led linked list
 	pNode = led_list.pHead;
