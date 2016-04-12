@@ -71,11 +71,11 @@ void SmartLEDProcess(void){
 	while(pNode != NULL){
 		pLed = (SmartLED*)(pNode->pData);
 		pColor = &pLed->uColor;
-		sprintf(sMsg, "%c", pColor->cRed);
+		sprintf(sMsg, "%u", pColor->cRed);
 		UARTSend(sMsg); //send red byte
-		sprintf(sMsg, "%c", pColor->cGreen);
+		sprintf(sMsg, "%u", pColor->cGreen);
 		UARTSend(sMsg); //send green byte
-		sprintf(sMsg, "%c", pColor->cBlue);
+		sprintf(sMsg, "%u", pColor->cBlue);
 		UARTSend(sMsg); //send blue byte
 		pNode = (node*)pNode->pNext;
 	}

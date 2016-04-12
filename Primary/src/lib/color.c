@@ -8,7 +8,7 @@
 #include "color.h"
 
 /* Create an RGB color */
-struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue){
+struct ColorRGB ColorRGBCreate(unsigned char cRed, unsigned char cGreen, unsigned char cBlue){
 	struct ColorRGB uColorRGB;
 	
 	uColorRGB.cRed = cRed;

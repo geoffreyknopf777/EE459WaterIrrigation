@@ -15,9 +15,9 @@
 
 /* RGB color structure definition */
 struct ColorRGB{
-	char cRed;
-	char cGreen;
-	char cBlue;
+	unsigned char cRed;
+	unsigned char cGreen;
+	unsigned char cBlue;
 };
 
 /* Get the red component of an RGB color */
@@ -30,6 +30,6 @@ struct ColorRGB{
 #define ColorRGBGetBlue(uColorRGB) ( uColorRGB.cBlue )
 
 /* Create an RGB color */
-struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
+struct ColorRGB ColorRGBCreate(unsigned char cRed, unsigned char cGreen, unsigned char cBlue);
 
 #endif /* COLOR_H */
