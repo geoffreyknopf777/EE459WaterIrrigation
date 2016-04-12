@@ -60,6 +60,7 @@ int main(void)
 	
 	while(1){
 		
+		LedBlink(&uTestLed, 50);
 		SmartLEDProcess();
 		
 		//TestUartMux();
