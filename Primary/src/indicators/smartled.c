@@ -80,8 +80,8 @@ void SmartLEDProcess(void){
 		pNode = (node*)pNode->pNext;
 	}
 	
-	UARTMuxSetChannel(oldChannel);
-	UARTSetBaudRate(oldBaud);
+	//UARTMuxSetChannel(oldChannel);
+	//UARTSetBaudRate(oldBaud);
 	
 	//Delay for 1ms after sending color info
 	delay_ms(1);
