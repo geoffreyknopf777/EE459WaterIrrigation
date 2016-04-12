@@ -9,9 +9,9 @@
 #define COLOR_H
 
 /* Common color definitions */
-#define COLOR_RED   ( ColorCreate(255, 0, 0) )
-#define COLOR_GREEN ( ColorCreate(0, 255, 0) )
-#define COLOR_BLUE  ( ColorCreate(0, 0, 255) )
+#define COLOR_RED   ( ColorRGBCreate(255, 0, 0) )
+#define COLOR_GREEN ( ColorRGBCreate(0, 255, 0) )
+#define COLOR_BLUE  ( ColorRGBCreate(0, 0, 255) )
 
 /* RGB color structure definition */
 struct ColorRGB{
@@ -19,9 +19,6 @@ struct ColorRGB{
 	char cGreen;
 	char cBlue;
 };
-
-/* Create an RGB color */
-struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 
 /* Get the red component of an RGB color */
 #define ColorRGBGetRed(uColorRGB) ( uColorRGB.cRed )
@@ -31,5 +28,8 @@ struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 
 /* Get the blue component of an RGB color */
 #define ColorRGBGetBlue(uColorRGB) ( uColorRGB.cBlue )
+
+/* Create an RGB color */
+struct ColorRGB ColorRGBCreate(char cRed, char cGreen, char cBlue);
 
 #endif /* COLOR_H */
