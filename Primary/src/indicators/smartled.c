@@ -6,11 +6,15 @@
 *************************************************/
 
 #include <stdbool.h> 
+#include <inttypes.h>
 #include "uart.h"
+#include "uart_mux.h"
 #include "timer.h"
 #include "linkedlist.h"
 #include "color.h"
 #include "smartled.h"
+
+#define SMART_LED_BUAD 115200
 
 linkedlist led_list;
 bool initialized = false;
@@ -53,13 +57,17 @@ void SmartLEDProcess(void){
 	struct SmartLED* pLed;
 	struct ColorRGB* pColor;
 	char sMsg[2];
+	uint32_t oldBaud;
+	unsigned char oldChannel;
 	
-	//Set uart baud rate to 115200
-	UARTInit(115200);
+	//Set uart baud rate
+	oldBaud = UARTGetBaudRate();
+	oldChannel = UARTMuxGetChannel();
+	UARTMuxSetChannel(UART_MUX_SMART_LED);
+	UARTSetBaudRate(SMART_LED_BUAD);
 	
 	//Loop over each element of the led linked list
 	pNode = led_list.pHead;
-	
 	while(pNode != NULL){
 		pLed = (SmartLED*)(pNode->pData);
 		pColor = &pLed->uColor;
@@ -69,9 +77,11 @@ void SmartLEDProcess(void){
 		UARTSend(sMsg); //send green byte
 		sprintf(sMsg, "%c", pColor->cBlue);
 		UARTSend(sMsg); //send blue byte
-		
 		pNode = (node*)pNode->pNext;
 	}
+	
+	UARTMuxSetChannel(oldChannel);
+	UARTSetBaudRate(oldBaud);
 	
 	//Delay for 1ms after sending color info
 	delay_ms(1);

@@ -22,8 +22,10 @@
 
 #define UART_BAUD_RATE 9600
 #define MAX_MSG_LEN 256
+#define SMART_LED_NUM 6
 
 LED uTestLed; //test led
+SmartLED aSmartLED[SMART_LED_NUM]; //smart led
 char sSendMsg[MAX_MSG_LEN]; //send buffer
 char sRecMsg[MAX_MSG_LEN]; //receive buffer
 
@@ -34,7 +36,12 @@ void RunTests(void){
 struct SmartLED uLed;
 
 void Init(void){
-	LedInit(&uTestLed, &DDRB, &PORTB, 1); //test led
+	int i;
+	
+	LedInit(&uTestLed, &DDRB, &PORTB, 1); //test led init
+	for(i=0; i<SMART_LED_NUM){
+		SmartLEDInit(&aSmartLED[i], COLOR_RED); //smart led init
+	}
 	UARTInit(UART_BAUD_RATE); //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
 	TemperatureSensorInit(&DDRC, &PORTC, 0); //temperature sensor init
@@ -52,6 +59,8 @@ int main(void)
 	Init();
 	
 	while(1){
+		
+		SmartLEDProcess();
 		
 		//TestUartMux();
 		
@@ -98,9 +107,11 @@ int main(void)
 			
 		//RunTests();
 		
-		UARTMuxSelect(UART_MUX_COMPUTER);
+		/*
+		UARTMuxSetChannel(UART_MUX_COMPUTER);
 		sprintf(sMsg, "a\r\n");
 		UARTSend(sMsg);
+		*/
 		
 		/*
 		//Proximity sensor code

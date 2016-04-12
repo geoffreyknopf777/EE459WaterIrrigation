@@ -19,6 +19,8 @@ void UARTMuxInit(volatile uint8_t*, volatile uint8_t*, unsigned char,
 						volatile uint8_t*, volatile uint8_t*, unsigned char,
 						volatile uint8_t*, volatile uint8_t*, unsigned char);
 
-void UARTMuxSelect(unsigned char);
+void UARTMuxSetChannel(unsigned char);
+
+unsigned char UARTMuxGetChannel(void);
 
 #endif /* UART_MUX_H */

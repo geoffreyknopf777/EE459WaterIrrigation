@@ -15,6 +15,9 @@
 #define UART_MUX_INTERNET   1
 #define UART_MUX_SMART_LED  2
 	
+//Selected channel
+unsigned char cChannel;
+	
 //PORT pointers						
 static volatile uint8_t* pPORT_S0;
 static volatile uint8_t* pPORT_S1;
@@ -30,6 +33,8 @@ void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, un
 						volatile uint8_t* pDDR_S1Set, volatile uint8_t* pPORT_S1Set, unsigned char nPinNum_S1Set,
 						volatile uint8_t* pDDR_S2Set, volatile uint8_t* pPORT_S2Set, unsigned char nPinNum_S2Set
 						){
+							
+	cChannel = 0; //initialize the channel to 0						
 							
 	//save settings
 	pPORT_S0 = pPORT_S0Set;
@@ -50,9 +55,11 @@ void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, un
 	ClearBits(*pPORT_S2, nPinNum_S2, 1);
 }
 
-void UARTMuxSelect(unsigned char cSelectChan){
+void UARTMuxSetChannel(unsigned char cSelectChan){
+	cChannel = cSelectChannel;
+	
 	//select 0
-	if(GetBit(cSelectChan, 0)){
+	if(GetBit(cChannel, 0)){
 		SetBits(*pPORT_S0, nPinNum_S0, 1);
 	}
 	else{
@@ -60,7 +67,7 @@ void UARTMuxSelect(unsigned char cSelectChan){
 	}
 	
 	//select 1
-	if(GetBit(cSelectChan, 1)){
+	if(GetBit(cChannel, 1)){
 		SetBits(*pPORT_S1, nPinNum_S1, 1);
 	}
 	else{
@@ -68,10 +75,14 @@ void UARTMuxSelect(unsigned char cSelectChan){
 	}
 	
 	//select 2
-	if(GetBit(cSelectChan, 2)){
+	if(GetBit(cChannel, 2)){
 		SetBits(*pPORT_S2, nPinNum_S2, 1);
 	}
 	else{
 		ClearBits(*pPORT_S2, nPinNum_S2, 1);
 	}
+}
+
+unsigned char UARTMuxGetChannel(void){
+	return cChannel;
 }

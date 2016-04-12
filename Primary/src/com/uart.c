@@ -16,13 +16,26 @@
 #define FOSC 7372800      // Clock frequency
 #define RX_TIMEOUT 10000  // Timeout for rx function
 
-void UARTInit(uint32_t nBaudRate){
+uint32_t nBaudRate;
+
+void UARTInit(uint32_t nBaudRateSet){
 	//Set buad rate
+	nBaudRate = nBaudRateSet;
 	UBRR0 = (char) FOSC/16/nBaudRate-1;
 	// Enable RX and TX
 	UCSR0B |= (1 << TXEN0 | 1 << RXEN0); //Turn on transmitter and receiver
 	UCSR0C = (3 << UCSZ00); //Async., no parity,
 	// 1 stop bit, 8 data bits
+}
+
+/* Get the current baud rate */
+uint32_t UARTGetBuadRate(void){
+	return nBaudRate;
+}
+
+/* Set the baud rate */
+void UARTSetBuadRate(uint32_t nBaudRate){
+	UARTInit(nBaudRate);
 }
 
 char rx_char();
