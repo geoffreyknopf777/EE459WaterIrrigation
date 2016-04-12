@@ -43,19 +43,20 @@ char rx_char();
 void tx_char(char ch);
 
 char UARTSend(char* sMsg){
-	unsigned char i;
+	unsigned char i = 0;
 	
-	for(i=0; i<sizeof(sMsg); i++){
+	while(1){
 		if(sMsg[i] == '\0'){ //detect '\0' and return
 			return i; //return number of bytes sent
 		}
 		tx_char(sMsg[i]);
+		i++;
 	}
-	return sizeof(sMsg); //return number of bytes sent
+	return i; //return number of bytes sent
 }
 
 char UARTReceive(char* sMsg){
-	unsigned char i;
+	unsigned char i = 0;
 	
 	cli(); //clear local interrupt
 	if ( !(UCSR0A & (1 << RXC0)) ){ //return if no character available in buffer
@@ -63,17 +64,18 @@ char UARTReceive(char* sMsg){
 		return 0; //failure, no bytes received
 	}
 
-	for(i=0; i<sizeof(sMsg); i++){
+	while(1){
 		sMsg[i] = rx_char();
 		if(sMsg[i] == '\0'){ //detect '\0' and return
 			return i+1; //return number of bytes received
 		}
+		i++;
 	}
 	//if code gets here, sender forgot to add null terminator
 	//insert '\0' at end of message
-	sMsg[sizeof(sMsg)-1] = '\0';
+	sMsg[i-1] = '\0';
 	sei(); //set enable interrupt
-	return sizeof(sMsg); //success
+	return i; //success
 }
 
 char rx_char()
