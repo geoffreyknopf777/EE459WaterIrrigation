@@ -56,7 +56,7 @@ void UARTMuxInit(volatile uint8_t* pDDR_S0Set, volatile uint8_t* pPORT_S0Set, un
 }
 
 void UARTMuxSetChannel(unsigned char cSelectChan){
-	cChannel = cSelectChannel;
+	cChannel = cSelectChan;
 	
 	//select 0
 	if(GetBit(cChannel, 0)){
