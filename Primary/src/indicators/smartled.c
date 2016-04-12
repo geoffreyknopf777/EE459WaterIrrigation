@@ -75,6 +75,7 @@ void SmartLEDProcess(void){
 		sprintf(sMsg, "%u", pColor->cRed);
 		UARTSend(sMsg); //send red byte
 		
+		/*
 		delay_ms(100);
 		
 		sprintf(sMsg, "%u", pColor->cGreen);
@@ -84,6 +85,7 @@ void SmartLEDProcess(void){
 		
 		sprintf(sMsg, "%u", pColor->cBlue);
 		UARTSend(sMsg); //send blue byte
+		*/
 		
 		pNode = (node*)pNode->pNext;
 	}
