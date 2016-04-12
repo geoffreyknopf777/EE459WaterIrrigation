@@ -22,7 +22,7 @@
 
 #define UART_BAUD_RATE 9600
 #define MAX_MSG_LEN 256
-#define SMART_LED_NUM 6
+#define SMART_LED_NUM 1 //6
 
 LED uTestLed; //test led
 SmartLED aSmartLED[SMART_LED_NUM]; //smart led
