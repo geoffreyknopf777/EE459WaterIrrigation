@@ -78,13 +78,13 @@ void SmartLEDProcess(void){
 		sprintf(sMsg, "%u", pColor->cBlue);
 		UARTSend(sMsg); //send blue byte
 		pNode = (node*)pNode->pNext;
-		delay_ms(10);
+		delay_ms(30);
 	}
 	
 	//UARTMuxSetChannel(oldChannel);
 	//UARTSetBaudRate(oldBaud);
 	
 	//Delay for 1ms after sending color info
-	delay_ms(1000);
+	delay_ms(60);
 	
 }
