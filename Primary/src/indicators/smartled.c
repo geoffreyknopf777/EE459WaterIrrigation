@@ -56,14 +56,18 @@ void SmartLEDProcess(void){
 	node* pNode;
 	struct SmartLED* pLed;
 	struct ColorRGB* pColor;
-	char sMsg[4];
+	char sMsg[4] = "000\0";
 	uint32_t oldBaud;
 	unsigned char oldChannel;
 	
 	//Set uart baud rate
 	oldBaud = UARTGetBaudRate();
 	oldChannel = UARTMuxGetChannel();
-	UARTMuxSetChannel(UART_MUX_SMART_LED);
+	//UARTMuxSetChannel(UART_MUX_SMART_LED);
+	//UARTSetBaudRate(SMART_LED_BAUD);
+	
+	//DEBUG
+	UARTMuxSetChannel(UART_MUX_COMPUTER);
 	UARTSetBaudRate(SMART_LED_BAUD);
 	
 	//Loop over each element of the led linked list
@@ -72,21 +76,10 @@ void SmartLEDProcess(void){
 		pLed = (SmartLED*)(pNode->pData);
 		pColor = &pLed->uColor;
 		
-		sprintf(sMsg, "%u", pColor->cRed);
-		//UARTSend(sMsg); //send red byte
-		UARTSend("255");
-		
-		/*
-		delay_ms(100);
-		
-		sprintf(sMsg, "%u", pColor->cGreen);
-		UARTSend(sMsg); //send green byte
-		
-		delay_ms(100);
-		
-		sprintf(sMsg, "%u", pColor->cBlue);
-		UARTSend(sMsg); //send blue byte
-		*/
+		sMsg[0] = pColor->cRed;
+		sMsg[1] = pColor->cGreen;
+		sMsg[2] = pColor->cBlue;
+		UARTSend(sMsg); //send bytes for colors
 		
 		pNode = (node*)pNode->pNext;
 	}
