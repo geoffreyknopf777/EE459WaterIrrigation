@@ -80,7 +80,7 @@ void SmartLEDProcess(void){
 		sMsg[1] = (char)pColor->cGreen;
 		sMsg[2] = (char)pColor->cBlue;
 		sMsg[3] = '\0';
-		UARTSend(sMsg); //send bytes for colors
+		//UARTSend(sMsg); //send bytes for colors
 		
 		pNode = (node*)pNode->pNext;
 	}
