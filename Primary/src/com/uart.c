@@ -23,7 +23,7 @@ void UARTInit(uint32_t nBaudRateSet){
 	//Set baud rate
 	nBaudRate = nBaudRateSet;
 	//UBRR0 = (char) FOSC/16/nBaudRate-1;
-	UBRR0 = (char) 4;
+	UBRR0 = (char) 3;
 	// Enable RX and TX
 	UCSR0B |= (1 << TXEN0 | 1 << RXEN0); //Turn on transmitter and receiver
 	UCSR0C = (3 << UCSZ00); //Async., no parity,
