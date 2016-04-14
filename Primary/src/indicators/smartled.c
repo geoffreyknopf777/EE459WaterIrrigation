@@ -76,9 +76,9 @@ void SmartLEDProcess(void){
 		pLed = (SmartLED*)(pNode->pData);
 		pColor = &pLed->uColor;
 		
-		sMsg[0] = pColor->cRed;
-		sMsg[1] = pColor->cGreen;
-		sMsg[2] = pColor->cBlue;
+		sMsg[0] = (char)pColor->cRed;
+		sMsg[1] = (char)pColor->cGreen;
+		sMsg[2] = (char)pColor->cBlue;
 		sMsg[3] = '\0';
 		UARTSend(sMsg); //send bytes for colors
 		
