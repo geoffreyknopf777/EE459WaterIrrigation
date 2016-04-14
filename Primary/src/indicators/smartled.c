@@ -61,6 +61,7 @@ void SmartLEDProcess(void){
 	unsigned char oldChannel;
 	
 	//Set uart baud rate
+	sMsg[3] = '\0';
 	oldBaud = UARTGetBaudRate();
 	oldChannel = UARTMuxGetChannel();
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
