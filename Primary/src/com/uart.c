@@ -14,6 +14,8 @@
 #include "uart.h"
 
 #define FOSC 7372800      // Clock frequency
+#define SMARTLED FOSC/16/115200-1
+#define COMPUTER FOSC/16/9600-1
 
 uint32_t nBaudRate;
 
@@ -21,7 +23,7 @@ void UARTInit(uint32_t nBaudRateSet){
 	//Set baud rate
 	nBaudRate = nBaudRateSet;
 	//UBRR0 = (char) FOSC/16/nBaudRate-1;
-	UBRR0 = (char) 6;
+	UBRR0 = (char) SMARTLED;
 	// Enable RX and TX
 	UCSR0B |= (1 << TXEN0 | 1 << RXEN0); //Turn on transmitter and receiver
 	UCSR0C = (3 << UCSZ00); //Async., no parity,
