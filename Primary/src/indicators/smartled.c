@@ -56,7 +56,7 @@ void SmartLEDProcess(void){
 	node* pNode;
 	struct SmartLED* pLed;
 	struct ColorRGB* pColor;
-	char sMsg[4];
+	char sMsg[3];
 	uint32_t oldBaud;
 	unsigned char oldChannel;
 	
@@ -79,8 +79,7 @@ void SmartLEDProcess(void){
 		sMsg[0] = (char)pColor->cRed;
 		sMsg[1] = (char)pColor->cGreen;
 		sMsg[2] = (char)pColor->cBlue;
-		sMsg[3] = '\0';
-		//UARTSend(sMsg); //send bytes for colors
+		UARTSend(sMsg, 3); //send bytes for colors
 		
 		pNode = (node*)pNode->pNext;
 	}

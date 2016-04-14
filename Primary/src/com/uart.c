@@ -14,7 +14,6 @@
 #include "uart.h"
 
 #define FOSC 7372800      // Clock frequency
-#define RX_TIMEOUT 10000  // Timeout for rx function
 
 uint32_t nBaudRate;
 
@@ -42,40 +41,26 @@ void UARTSetBaudRate(uint32_t nBaudRate){
 char rx_char();
 void tx_char(char ch);
 
-unsigned char UARTSend(char* sMsg){
-	unsigned char i = 0;
+uint32_t UARTSend(char* sMsg, uint32_t size){
+	uint32_t i;
 	
-	while(1){
-		if(sMsg[i] == '\0'){ //detect '\0' and return
-			return i; //return number of bytes sent
-		}
+	for(i=0; i<size; i++){
 		tx_char(sMsg[i]);
-		i++;
 	}
-	return i-1; //return number of bytes sent
+	
+	return size;
 }
 
-unsigned char UARTReceive(char* sMsg){
-	unsigned char i = 0;
+uint32_t UARTReceive(char* sMsg, uint32_t size){
+	uint32_t i;
 	
 	cli(); //clear local interrupt
-	if ( !(UCSR0A & (1 << RXC0)) ){ //return if no character available in buffer
-		sei(); //enable global interrupts
-		return 0; //failure, no bytes received
-	}
-
-	while(1){
+	for(i=0; i<size; i++){
 		sMsg[i] = rx_char();
-		if(sMsg[i] == '\0'){ //detect '\0' and return
-			return i+1; //return number of bytes received
-		}
-		i++;
 	}
-	//if code gets here, sender forgot to add null terminator
-	//insert '\0' at end of message
-	sMsg[i-1] = '\0';
 	sei(); //set enable interrupt
-	return i-1; //success
+	
+  return size;
 }
 
 char rx_char()
@@ -83,12 +68,7 @@ char rx_char()
 	int nTimeout = 0;
 
  // Wait for receive complete flag to go high
-	while ( !(UCSR0A & (1 << RXC0)) ){
-		if(nTimeout > RX_TIMEOUT){
-			return '\0';
-		}
-		nTimeout++;
-	}
+	while ( !(UCSR0A & (1 << RXC0)) ){}
 		return UDR0;
 }
 

@@ -111,7 +111,7 @@ int main(void)
 		/*
 		UARTMuxSetChannel(UART_MUX_COMPUTER);
 		sprintf(sMsg, "a\r\n");
-		UARTSend(sMsg);
+		UARTSend(sMsg, strlen(sMsg));
 		*/
 		
 		/*
