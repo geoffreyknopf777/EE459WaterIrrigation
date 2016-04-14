@@ -64,16 +64,18 @@ void SmartLEDProcess(void){
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
 	UARTSetBaudRate(SMART_LED_BAUD);
 	
-	//DEBUG
-	//UARTMuxSetChannel(UART_MUX_COMPUTER);
-	//UARTSetBaudRate(SMART_LED_BAUD);
-	
 	//Loop over each element of the led linked list
+	/*
 	pNode = led_list.pHead;
 	while(pNode != NULL){
 		pLed = (SmartLED*)(pNode->pData);
 		UARTSend(&pLed->uColor, sizeof(pLed->uColor)); //send bytes for colors
 		pNode = (node*)pNode->pNext;
+	}
+	*/
+	int i;
+	for(i=0; i<6; i++){
+		UARTSend(&i, 3);
 	}
 	
 	//UARTMuxSetChannel(oldChannel);
