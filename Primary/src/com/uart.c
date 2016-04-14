@@ -41,22 +41,22 @@ void UARTSetBaudRate(uint32_t nBaudRate){
 char rx_char();
 void tx_char(char ch);
 
-uint32_t UARTSend(char* sMsg, uint32_t size){
+uint32_t UARTSend(void* sMsg, uint32_t size){
 	uint32_t i;
 	
 	for(i=0; i<size; i++){
-		tx_char(sMsg[i]);
+		tx_char(((char*)sMsg)[i]);
 	}
 	
 	return size;
 }
 
-uint32_t UARTReceive(char* sMsg, uint32_t size){
+uint32_t UARTReceive(void* sMsg, uint32_t size){
 	uint32_t i;
 	
 	cli(); //clear local interrupt
 	for(i=0; i<size; i++){
-		sMsg[i] = rx_char();
+		((char*)sMsg)[i] = rx_char();
 	}
 	sei(); //set enable interrupt
 	

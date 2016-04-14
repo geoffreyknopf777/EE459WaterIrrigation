@@ -72,7 +72,7 @@ void SmartLEDProcess(void){
 	pNode = led_list.pHead;
 	while(pNode != NULL){
 		pLed = (SmartLED*)(pNode->pData);
-		UARTSend(&pLed->uColor, sizeof(pLed->uColor)); //send bytes for colors
+		UARTSend((char*)&pLed->uColor, sizeof(pLed->uColor)); //send bytes for colors
 		pNode = (node*)pNode->pNext;
 	}
 	
