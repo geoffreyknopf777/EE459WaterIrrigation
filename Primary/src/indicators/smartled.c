@@ -56,7 +56,7 @@ void SmartLEDProcess(void){
 	node* pNode;
 	struct SmartLED* pLed;
 	struct ColorRGB* pColor;
-	char sMsg[4] = "000";
+	char sMsg[4];
 	uint32_t oldBaud;
 	unsigned char oldChannel;
 	
