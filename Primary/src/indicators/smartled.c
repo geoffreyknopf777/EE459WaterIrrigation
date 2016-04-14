@@ -61,12 +61,12 @@ void SmartLEDProcess(void){
 	//Set uart baud rate
 	oldBaud = UARTGetBaudRate();
 	oldChannel = UARTMuxGetChannel();
-	//UARTMuxSetChannel(UART_MUX_SMART_LED);
-	//UARTSetBaudRate(SMART_LED_BAUD);
+	UARTMuxSetChannel(UART_MUX_SMART_LED);
+	UARTSetBaudRate(SMART_LED_BAUD);
 	
 	//DEBUG
-	UARTMuxSetChannel(UART_MUX_COMPUTER);
-	UARTSetBaudRate(SMART_LED_BAUD);
+	//UARTMuxSetChannel(UART_MUX_COMPUTER);
+	//UARTSetBaudRate(SMART_LED_BAUD);
 	
 	//Loop over each element of the led linked list
 	pNode = led_list.pHead;
