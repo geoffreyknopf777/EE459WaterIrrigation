@@ -89,6 +89,6 @@ void SmartLEDProcess(void){
 	//UARTSetBaudRate(oldBaud);
 	
 	//Delay for 1ms after sending color info
-	delay_ms(1000);
+	delay_ms(1);
 	
 }

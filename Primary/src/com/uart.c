@@ -42,7 +42,7 @@ void UARTSetBaudRate(uint32_t nBaudRate){
 char rx_char();
 void tx_char(char ch);
 
-char UARTSend(char* sMsg){
+unsigned char UARTSend(char* sMsg){
 	unsigned char i = 0;
 	
 	while(1){
@@ -52,10 +52,10 @@ char UARTSend(char* sMsg){
 		tx_char(sMsg[i]);
 		i++;
 	}
-	return i; //return number of bytes sent
+	return i-1; //return number of bytes sent
 }
 
-char UARTReceive(char* sMsg){
+unsigned char UARTReceive(char* sMsg){
 	unsigned char i = 0;
 	
 	cli(); //clear local interrupt
@@ -75,7 +75,7 @@ char UARTReceive(char* sMsg){
 	//insert '\0' at end of message
 	sMsg[i-1] = '\0';
 	sei(); //set enable interrupt
-	return i; //success
+	return i-1; //success
 }
 
 char rx_char()
