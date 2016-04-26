@@ -105,9 +105,9 @@ def main():
         print('Send Control Signals')
         #if msg == rcv:
         #Zone1
-        port.write(""+zone1)
+        port.write(zone1)
         #Zone2
-        port.write(""+zone2)
+        port.write(zone2)
 				
         time.sleep(1)
 
