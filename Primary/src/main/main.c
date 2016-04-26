@@ -51,7 +51,7 @@ void Init(void){
 
 int main(void)
 {
-	unsigned char i = 0;
+	//unsigned char i = 0;
 	int nGetScheduleLen = 11;
 	char sGetSchedule[] = "GetSchedule";
 	char sZone1[1];
