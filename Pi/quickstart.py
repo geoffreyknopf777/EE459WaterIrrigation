@@ -67,7 +67,7 @@ def main():
         #msg='GetSchedule'
         #rcv = port.read(len(msg))
 
-				print('Get current time')
+        print('Get current time')
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
     
