@@ -64,7 +64,7 @@ int main(void)
 		
 		
 		//Get Schedule from PI
-		UARTMuxSelect(UART_MUX_PI);
+		UARTMuxSetChannel(UART_MUX_PI);
 		UARTSend(sGetSchedule, nGetScheduleLen);
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
