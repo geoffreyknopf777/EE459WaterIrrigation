@@ -63,6 +63,9 @@ def main():
     print('Serial Init')
     port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
     while True:
+		  serial.print("hello\r\n");
+
+    while True:
 
         print('Wait for Schedule Request')
         #msg='GetSchedule'
