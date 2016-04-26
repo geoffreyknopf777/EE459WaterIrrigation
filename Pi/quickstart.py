@@ -110,7 +110,8 @@ def main():
         #Zone2
         port.write(repr(zone2))
 				
-        time.sleep(1)
+        time.sleep(5)
+        print('')
 
 if __name__ == '__main__':
     main()
