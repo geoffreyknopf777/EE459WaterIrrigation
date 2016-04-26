@@ -52,16 +52,40 @@ void Init(void){
 int main(void)
 {
 	unsigned char i = 0;
-	//int nMsgLen;
-	//char sMsg[254];
+	int nGetScheduleLen = 11;
+	char sGetSchedule[] = "GetSchedule";
+	char sZone1[1];
+	char sZone2[2];
 	//unsigned char degreesCelsius;
 	
 	Init();
 	
 	while(1){
 		
-		LedBlink(&uTestLed, 50);
-		SmartLEDProcess();
+		
+		//Get Schedule from PI
+		UARTMuxSelect(UART_MUX_PI);
+		UARTSend(sGetSchedule, nGetScheduleLen);
+		UARTReceive(sZone1, 1); //zone 1
+		UARTReceive(sZone2, 1); //zone 2
+		
+		//Control the valves
+		if(sZone1[0] == '1'){
+			RelayTurnOn0();
+		}
+		else{
+			RelayTurnOff0();
+		}
+		if(sZone2[0] == '1'){
+			RelayTurnOn1();
+		}
+		else{
+			RelayTurnOff1();
+		}		
+		
+		
+		//LedBlink(&uTestLed, 50);
+		//SmartLEDProcess();
 		
 		//TestUartMux();
 		

@@ -11,7 +11,7 @@
 #include <inttypes.h>
 
 #define UART_MUX_COMPUTER   0
-#define UART_MUX_INTERNET   1
+#define UART_MUX_PI         1
 #define UART_MUX_SMART_LED  2
 
 //Initialize the 8 channel mux/demux with 3 select pins

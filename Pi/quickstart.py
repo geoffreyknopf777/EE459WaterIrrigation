@@ -62,59 +62,52 @@ def main():
 
     print('Serial Init')
     port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
-    while True:
-		  port.write('hello\r\n');
 
     while True:
 
         print('Wait for Schedule Request')
-        #msg='GetSchedule'
-        #rcv = port.read(len(msg))
-
-        print('Get current time')
-        now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-        later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
-    
-        print('Zone1 Check Schedule')
-        eventsResult = service.events().list(
-          calendarId='2b7pf2m67omiv970o9adi1rop4@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
-        orderBy='startTime').execute()
-        events = eventsResult.get('items', [])
-
-        if not events:
-            print('Zone1 off')
-            zone1=0
-        for event in events:
-            print('Zone1 on')
-            zone1=1
-            #start = event['start'].get('dateTime', event['start'].get('date'))
-            #print(event['summary'])
-
-
-        print('Zone2 Check Schedule')
-        eventsResult = service.events().list(
-          calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
-        orderBy='startTime').execute()
-        events = eventsResult.get('items', [])
-
-        if not events:
-            print('Zone2 off')
-            zone2=0
-        for event in events:
-            print('Zone2 on')
-            zone2=1
-            #start = event['start'].get('dateTime', event['start'].get('date'))
-            #print(event['summary'])
-
-        print('Send Control Signals')
-        #if msg == rcv:
-        #Zone1
-        port.write(repr(zone1))
-        #Zone2
-        port.write(repr(zone2))
+        msg='GetSchedule'
+        rcv = port.read(len(msg))
+        print('Message received: ', rcv)
+				if msg == rcv:
 				
-        time.sleep(5)
-        print('')
+          print('Get current time')
+          now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+          later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
+    
+          print('Zone1 Check Schedule')
+          eventsResult = service.events().list(
+            calendarId='2b7pf2m67omiv970o9adi1rop4@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
+          orderBy='startTime').execute()
+          events = eventsResult.get('items', [])
+
+          if not events:
+              print('Zone1 off')
+              zone1=0
+          for event in events:
+              print('Zone1 on')
+              zone1=1
+
+
+          print('Zone2 Check Schedule')
+          eventsResult = service.events().list(
+            calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
+          orderBy='startTime').execute()
+          events = eventsResult.get('items', [])
+
+          if not events:
+              print('Zone2 off')
+              zone2=0
+          for event in events:
+              print('Zone2 on')
+              zone2=1
+
+          print('Send Control Signals')
+          #Zone1
+          port.write(repr(zone1))
+          #Zone2
+          port.write(repr(zone2))
+          print('')
 
 if __name__ == '__main__':
     main()
