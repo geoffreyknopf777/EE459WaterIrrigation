@@ -102,7 +102,7 @@ def main():
             #start = event['start'].get('dateTime', event['start'].get('date'))
             #print(event['summary'])
 
-				print('Send Control Signals')
+        print('Send Control Signals')
         #if msg == rcv:
         #Zone1
         port.write(""+zone1)
