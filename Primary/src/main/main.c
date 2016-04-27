@@ -77,7 +77,7 @@ void Init(void){
 	}
 	UARTInit(UART_BAUD_RATE);                                          //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
-	ds1631_init(); ds1631_conv();                                      //temperature sensor init                                          
+	//ds1631_init(); ds1631_conv();                                      //temperature sensor init                                          
 	MoistureSensorInit(&DDRC, &PORTC, 1, 3);                           //moisture sensor init
 	LightSensorInit(2);                                                //light sensor init
 	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2);                      //proximity sensor init
@@ -102,7 +102,7 @@ int main(void)
 	while(1){
 		
 		//Read sensors
-		nTemp = getTempF();	                      //temperature
+		nTemp = 0; //getTempF();	                      //temperature
 		cMoisture = MoistureSensorGetMoisture();	//moisture
 		cLight = LightSensorGetIntensity();	      //light
 		bProx = ProximitySensorInRange();	        //proximity
