@@ -114,7 +114,7 @@ int main(void)
 		
 		while(1){
 			UARTReceive(sRec, 1);	
-			UARTSend(sGet, 1);		
+			UARTSend(sRec, 1);		
 		}
 		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
