@@ -83,10 +83,10 @@ void Init(void){
 int main(void)
 {
 	//sensor variables
-	int nTemperature;
+	int nTemp;
 	unsigned char cMoisture;
 	unsigned char cLight;
-	bool bProximity;
+	bool bProx;
 	
 	char sSend[2] = "g";
 	char sRec[2] = "";
@@ -98,10 +98,10 @@ int main(void)
 	while(1){
 		
 		//Read sensors
-		nTemperature = getTempF();	              //temperature
+		nTemp = getTempF();	                      //temperature
 		cMoisture = MoistureSensorGetMoisture();	//moisture
 		cLight = LightSensorGetIntensity();	      //light
-		bProximity = ProximitySensorInRange();	  //proximity
+		bProx = ProximitySensorInRange();	        //proximity
 		
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
@@ -116,13 +116,13 @@ int main(void)
 		UARTReceive(sZone2, 1); //zone 2
 		
 		//Control the valves
-		if(sZone1[0] == 1 && cTemperature > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProximity){
+		if(sZone1[0] == 1 && nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx){
 			RelayTurnOn0();
 		}
 		else{
 			RelayTurnOff0();
 		}
-		if(sZone2[0] == 1 && cTemperature > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProximity){
+		if(sZone2[0] == 1 && nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx){
 			RelayTurnOn1();
 		}
 		else{
