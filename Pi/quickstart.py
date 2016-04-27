@@ -106,7 +106,7 @@ def main():
 
           print('Send Control Signals')
           #Zone1 and Zone2
-          port.write(repr(zone1), repr(zone2))
+          port.write(repr(zone1) + repr(zone2))
           print('')
           time.sleep(10)
 
