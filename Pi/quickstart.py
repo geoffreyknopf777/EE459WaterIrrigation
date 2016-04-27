@@ -65,21 +65,21 @@ def main():
 
     while True:
 
-          print('Get current time')
-          now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-          later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
+        print('Get current time')
+        now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+        later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
     
-          print('Zone1 Check Schedule')
-          eventsResult = service.events().list(
-            calendarId='2b7pf2m67omiv970o9adi1rop4@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
-          orderBy='startTime').execute()
-          events1 = eventsResult.get('items', [])		
+        print('Zone1 Check Schedule')
+        eventsResult = service.events().list(
+          calendarId='2b7pf2m67omiv970o9adi1rop4@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
+        orderBy='startTime').execute()
+        events1 = eventsResult.get('items', [])		
 		
-          print('Zone2 Check Schedule')
-          eventsResult = service.events().list(
-            calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
-          orderBy='startTime').execute()
-          events2 = eventsResult.get('items', [])		
+        print('Zone2 Check Schedule')
+        eventsResult = service.events().list(
+          calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
+        orderBy='startTime').execute()
+        events2 = eventsResult.get('items', [])		
 		
         print('Wait for Schedule Request')
         msg='g'
