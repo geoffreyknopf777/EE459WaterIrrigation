@@ -92,8 +92,8 @@ int main(void)
 	unsigned char cLight;
 	bool bProx;
 	
-	char sSend[2] = "g";
-	char sRec[2] = "";
+	char sGet[2] = "g";
+	char sRec[3];
 	char sZone1[2] = "0";
 	char sZone2[2] = "0";
 	
@@ -119,6 +119,7 @@ int main(void)
 		
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
+	  UARTSend(sRec, 1); //echo the character received
 		
 		//Control the valves
 		if(sZone1[0] == 1 /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
