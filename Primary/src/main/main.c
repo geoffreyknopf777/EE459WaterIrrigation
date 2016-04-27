@@ -100,6 +100,8 @@ int main(void)
 	Init();
 	
 	while(1){
+		LedBlink(&uTestLed, 50); //heartbeat
+		
 		
 		//Read sensors
 		nTemp = 0; //getTempF();	                      //temperature
@@ -137,65 +139,6 @@ int main(void)
 		
 		
 		//SmartLEDProcess();
-		
-		//TestUartMux();
-		
-		//delay_ms(1000);
-		
-		//degreesCelsius = TemperatureSensorReadC();
-		
-		//UARTMuxSelect(i);
-		//delay_ms(1);
-		//i++;
-		
-		
-		/*
-		SetBits(PORTD, 4, 1);
-		SetBits(PORTD, 5, 1);
-		SetBits(PORTD, 6, 1);
-		delay_ms(100);
-		ClearBits(PORTD, 4, 1);
-		ClearBits(PORTD, 5, 1);
-		ClearBits(PORTD, 6, 1);
-		delay_ms(100);
-		*/
-		
-		/*
-		delay_ms(1000);
-		for(int j=1; j<i+1; j++){
-			RelayTurnOn0();
-			delay_ms(100);
-			RelayTurnOff0();
-			delay_ms(100);
-		}
-		i++;
-			
-		delay_ms(1000);		
-		*/
-		
-		//RelayTurnOff0();
-		//RelayTurnOff1();
-		//delay_ms(500);
-			
-		//RunTests();
-		
-		/*
-		UARTMuxSetChannel(UART_MUX_COMPUTER);
-		sprintf(sMsg, "a\r\n");
-		UARTSend(sMsg, strlen(sMsg));
-		*/
-		
-		/*
-		//Proximity sensor code
-		if(ProximitySensorInRange()){
-			//code gets here if the proximity sensor is in range
-			LedBlink(&uTestLed, 50);
-			RelayTurnOn0();
-		}
-		else{
-			LedBlink(&uTestLed, 2000);
-		}
-		*/
 	}
   
 	return 0;   /* never reached */
