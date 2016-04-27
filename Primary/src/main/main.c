@@ -93,7 +93,7 @@ int main(void)
 	bool bProx;
 	
 	char sGet[2] = "g";
-	char sRec[10];
+	char sRec[2] = "n";
 	char sZone1[2] = "0";
 	char sZone2[2] = "0";
 	
@@ -112,12 +112,11 @@ int main(void)
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
 		
-		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
-			LedBlink(&uTestLed, 50);
+		while(sRec[0] == 'n'){ //keep sending signal until acknowledged
 			UARTSend(sGet, 1);
 			UARTReceive(sRec, 1);
 		}
-		sRec[0] = 0;
+		sRec[0] = 'n';
 		
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
