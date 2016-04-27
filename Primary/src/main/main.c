@@ -112,6 +112,7 @@ int main(void)
 		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			UARTSend(sSend, 1);
+			LedBlink(&uTestLed, 50);
 			UARTReceive(sRec, 1);
 		}
 		sRec[0] = 0;
@@ -134,7 +135,6 @@ int main(void)
 		}		
 		
 		
-		//LedBlink(&uTestLed, 50);
 		//SmartLEDProcess();
 		
 		//TestUartMux();
