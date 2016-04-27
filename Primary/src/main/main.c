@@ -83,7 +83,7 @@ void Init(void){
 int main(void)
 {
 	//sensor variables
-	unsigned char cTemperature;
+	int nTemperature;
 	unsigned char cMoisture;
 	unsigned char cLight;
 	bool bProximity;
@@ -98,7 +98,7 @@ int main(void)
 	while(1){
 		
 		//Read sensors
-		cTemperature = TemperatureSensorReadC();	//temperature
+		nTemperature = getTempF();	              //temperature
 		cMoisture = MoistureSensorGetMoisture();	//moisture
 		cLight = LightSensorGetIntensity();	      //light
 		bProximity = ProximitySensorInRange();	  //proximity
