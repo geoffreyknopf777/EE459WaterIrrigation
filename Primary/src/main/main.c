@@ -112,23 +112,18 @@ int main(void)
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
 		
-		while(1){
-			UARTReceive(sRec, 1);	
-			UARTSend(sRec, 1);		
-		}
-		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			LedBlink(&uTestLed, 50);
 			UARTSend(sGet, 1);
 			UARTReceive(sRec, 1);
-			//UARTSend(sRec, 2); //echo the character received
 		}
 		sRec[0] = 0;
 		
-		UARTReceive(sRec, 2); //zone 1 and 2
-		UARTSend(sRec, 2); //echo
-		sZone1[0] = sRec[0];
-		sZone2[0] = sRec[2];
+		UARTReceive(sZone1, 1); //zone 1
+		UARTReceive(sZone2, 1); //zone 2
+		
+		UARTSend(sZone1, 1);
+		UARTSend(sZone2, 1);
 		
 		//Control the valves
 		if(sZone1[0] == '1' /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
@@ -143,7 +138,6 @@ int main(void)
 		else{
 			RelayTurnOff1();
 		}		
-		
 		
 		//SmartLEDProcess();
 	}

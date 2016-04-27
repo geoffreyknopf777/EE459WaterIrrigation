@@ -62,11 +62,6 @@ def main():
 
     print('Serial Init')
     port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
-
-    while True:
-      port.write("z")
-      rcv = port.read(1)
-      print(rcv)
 		
     while True:
 
@@ -103,10 +98,13 @@ def main():
           port.write("a") #acknowledge the signal				
 
           #Zone1 and Zone2
-          port.write(zone1 + zone2)
-          rcv = port.read(2)
+          port.write(zone1)
+					port.write(zone2)
+          echozone1 = port.read(1)
+          echozone2 = port.read(1)
 					
-          print('Echo: ', rcv)
+          print('Echo zone 1: ', echozone1)
+					print('Echo zone 2: ', echozone2)
           print('Done sending schedule')
           print('')
           time.sleep(10)
