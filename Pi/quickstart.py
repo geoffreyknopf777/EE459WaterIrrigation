@@ -65,6 +65,10 @@ def main():
 		
     while True:
 
+      print('Wait for Schedule Request')
+      rcv = port.read(1)
+      if rcv == 'g':			
+		
         print('Get current time')
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
@@ -89,12 +93,7 @@ def main():
         if not events2:
             zone2='0'
         for event in events2:
-            zone2='1'
-		
-        print('Wait for Schedule Request')
-        rcv = port.read(1)
-        if rcv == 'g':
-          port.write('a') #acknowledge the signal				
+            zone2='1'			
 
           #Zone1 and Zone2
           port.write(zone1+'\r\n')
@@ -107,8 +106,6 @@ def main():
           print('Done sending schedule')
           print('')
           time.sleep(10)
-        else:
-          port.write('n')
 
 if __name__ == '__main__':
     main()
