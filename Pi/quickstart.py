@@ -65,14 +65,6 @@ def main():
 
     while True:
 
-        print('Wait for Schedule Request')
-        msg='g'
-        rcv = port.read(len(msg))
-        print('Message received: ', rcv)
-        if msg == rcv:
-          port.write("a") #acknowledge the signal
-          print('Echoed ack: ', port.read()) #get echo				
-          
           print('Get current time')
           now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
           later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
@@ -81,32 +73,33 @@ def main():
           eventsResult = service.events().list(
             calendarId='2b7pf2m67omiv970o9adi1rop4@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
           orderBy='startTime').execute()
-          events = eventsResult.get('items', [])
-
-          if not events:
-              print('Zone1 off')
-              zone1=0
-          for event in events:
-              print('Zone1 on')
-              zone1=1
-
-
+          events1 = eventsResult.get('items', [])		
+		
           print('Zone2 Check Schedule')
           eventsResult = service.events().list(
             calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
           orderBy='startTime').execute()
-          events = eventsResult.get('items', [])
+          events2 = eventsResult.get('items', [])		
+		
+        print('Wait for Schedule Request')
+        msg='g'
+        rcv = port.read(1)
+        if msg == rcv:
+          port.write("a") #acknowledge the signal				
 
-          if not events:
-              print('Zone2 off')
-              zone2=0
-          for event in events:
-              print('Zone2 on')
-              zone2=1
+          if not events1:
+              zone1='0'
+          for event in events1:
+              zone1='1'					
+
+          if not events2:
+              zone2='0'
+          for event in events2:
+              zone2='1'
 
           print('Send Control Signals')
           #Zone1 and Zone2
-          port.write(repr(zone1) + repr(zone2))
+          port.write(zone1 + zone2)
           print('')
           time.sleep(10)
 
