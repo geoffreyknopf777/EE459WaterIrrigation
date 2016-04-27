@@ -94,7 +94,7 @@ def main():
         print('Wait for Schedule Request')
         rcv = port.read(1)
         if rcv == 'g':
-          port.write('a'+'\r\n') #acknowledge the signal				
+          port.write('a') #acknowledge the signal				
 
           #Zone1 and Zone2
           port.write(zone1+'\r\n')
@@ -108,7 +108,7 @@ def main():
           print('')
           time.sleep(10)
         else:
-          port.write('n'+'\r\n')
+          port.write('n')
 
 if __name__ == '__main__':
     main()
