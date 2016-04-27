@@ -93,7 +93,7 @@ int main(void)
 	bool bProx;
 	
 	char sGet[2] = "g";
-	char sRec[3];
+	char sRec[3] = "n";
 	char sZone1[2] = "0";
 	char sZone2[2] = "0";
 	
