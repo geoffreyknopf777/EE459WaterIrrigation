@@ -130,6 +130,9 @@ int main(void)
 			RelayTurnOn0();
 		}
 		else{
+			while(1){
+				LedBlink(&uTestLed, 50); //heartbeat
+			}
 			RelayTurnOff0();
 		}
 		if(sZone2[0] == '1' /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
@@ -139,6 +142,9 @@ int main(void)
 			RelayTurnOn1();
 		}
 		else{
+			while(1){
+				LedBlink(&uTestLed, 50); //heartbeat
+			}
 			RelayTurnOff1();
 		}		
 		
