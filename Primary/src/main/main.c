@@ -12,7 +12,7 @@
 #include "macros.h"
 #include "uart.h"
 #include "uart_mux.h"
-#include "ds1631.h"
+//#include "ds1631.h"
 #include "lightsensor.h"
 #include "moisturesensor.h"
 #include "proximitysensor.h"
@@ -32,15 +32,18 @@
 #define LIGHT_MIN 10
 #define LIGHT_MAX 20
 
+/*
 void ds1631_init ();
 void ds1631_conv ();
 void ds1631_temp (unsigned char *);
+*/
 
 LED uTestLed; //test led
 SmartLED aSmartLED[SMART_LED_NUM]; //smart led
 char sSendMsg[MAX_MSG_LEN]; //send buffer
 char sRecMsg[MAX_MSG_LEN]; //receive buffer
 
+/*
 int getTempF(){
 #define DEC 0x80
 	int nF, nF2, nC2;
@@ -57,6 +60,7 @@ int getTempF(){
 
 	return nF;
 }
+*/
 
 void RunTests(void){
 	TestATmega328PPins();
