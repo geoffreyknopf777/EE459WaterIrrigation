@@ -95,7 +95,7 @@ def main():
         msg='g'
         rcv = port.read(1)
         if msg == rcv:
-          port.write("a") #acknowledge the signal				
+          port.write('a') #acknowledge the signal				
 
           #Zone1 and Zone2
           port.write(zone1)
@@ -109,7 +109,7 @@ def main():
           print('')
           time.sleep(10)
         else:
-          port.write("n")
+          port.write('n')
 
 if __name__ == '__main__':
     main()
