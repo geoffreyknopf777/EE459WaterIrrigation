@@ -111,7 +111,7 @@ int main(void)
 		UARTMuxSetChannel(UART_MUX_PI);
 		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
-			UARTSend(sSend, 1);
+			UARTSend(sGet, 1);
 			LedBlink(&uTestLed, 50);
 			UARTReceive(sRec, 1);
 		}
