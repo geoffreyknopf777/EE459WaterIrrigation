@@ -93,7 +93,7 @@ int main(void)
 	bool bProx;
 	
 	char sGet[2] = "g";
-	char sRec[256];
+	char sRec[10];
 	char sZone1[2] = "0";
 	char sZone2[2] = "0";
 	
@@ -113,8 +113,8 @@ int main(void)
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			UARTSend(sGet, 1);
 			UARTReceive(sRec, 2);
-			UARTSend(sRec, 2); //echo the character received
-			LedBlink(&uTestLed, 50);
+			//UARTSend(sRec, 2); //echo the character received
+			//LedBlink(&uTestLed, 50);
 		}
 		sRec[0] = 0;
 		

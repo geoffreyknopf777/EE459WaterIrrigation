@@ -75,11 +75,21 @@ def main():
         orderBy='startTime').execute()
         events1 = eventsResult.get('items', [])		
 		
+        if not events1:
+            zone1='0'
+        for event in events1:
+            zone1='1'
+		
         print('Zone2 Check Schedule')
         eventsResult = service.events().list(
           calendarId='dsmibip218ev9ubhp33pnc2pn8@group.calendar.google.com', timeMin=now, timeMax=later, maxResults=1, singleEvents=True,
         orderBy='startTime').execute()
         events2 = eventsResult.get('items', [])		
+		
+        if not events2:
+            zone2='0'
+        for event in events2:
+            zone2='1'
 		
         print('Wait for Schedule Request')
         msg='g'
@@ -87,17 +97,6 @@ def main():
         if msg == rcv:
           port.write("a") #acknowledge the signal				
 
-          if not events1:
-              zone1='0'
-          for event in events1:
-              zone1='1'					
-
-          if not events2:
-              zone2='0'
-          for event in events2:
-              zone2='1'
-
-          print('Send Control Signals')
           #Zone1 and Zone2
           port.write(zone1 + zone2)
           print('')
