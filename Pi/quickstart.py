@@ -73,7 +73,7 @@ def main():
           port.write("a") #acknowledge the signal
           print('Echoed acknowledge', port.read()) #get echo				
           
-					print('Get current time')
+          print('Get current time')
           now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
           later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
     
