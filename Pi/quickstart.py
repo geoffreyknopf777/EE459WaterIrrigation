@@ -99,6 +99,10 @@ def main():
 
           #Zone1 and Zone2
           port.write(zone1 + zone2)
+					rcv = port.read(2)
+					
+					print('Echo: ', rcv)
+					print('Done sending schedule')
           print('')
           time.sleep(10)
 

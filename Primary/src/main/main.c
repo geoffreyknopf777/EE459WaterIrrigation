@@ -119,32 +119,21 @@ int main(void)
 		sRec[0] = 0;
 		
 		UARTReceive(sRec, 2); //zone 1 and 2
+		UARTSend(sRec, 2); //echo
 		sZone1[0] = sRec[0];
 		sZone2[0] = sRec[2];
 		
 		//Control the valves
 		if(sZone1[0] == '1' /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
-			while(1){
-				LedBlink(&uTestLed, 50); //heartbeat
-			}
 			RelayTurnOn0();
 		}
 		else{
-			while(1){
-				LedBlink(&uTestLed, 50); //heartbeat
-			}
 			RelayTurnOff0();
 		}
 		if(sZone2[0] == '1' /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
-			while(1){
-				LedBlink(&uTestLed, 50); //heartbeat
-			}
 			RelayTurnOn1();
 		}
 		else{
-			while(1){
-				LedBlink(&uTestLed, 50); //heartbeat
-			}
 			RelayTurnOff1();
 		}		
 		
