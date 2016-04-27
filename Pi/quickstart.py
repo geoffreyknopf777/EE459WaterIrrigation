@@ -66,7 +66,7 @@ def main():
     while True:
 
         print('Wait for Schedule Request')
-        msg='GetSchedule'
+        msg='g'
         rcv = port.read(len(msg))
         print('Message received: ', rcv)
         if msg == rcv:

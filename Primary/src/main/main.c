@@ -51,11 +51,9 @@ void Init(void){
 
 int main(void)
 {
-	//unsigned char i = 0;
-	int nGetScheduleLen = 11;
-	char sGetSchedule[] = "GetSchedule";
+	char sGetSchedule[] = "g";
 	char sZone1[1];
-	char sZone2[2];
+	char sZone2[1];
 	//unsigned char degreesCelsius;
 	
 	Init();
@@ -65,7 +63,7 @@ int main(void)
 		
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
-		UARTSend(sGetSchedule, nGetScheduleLen);
+		UARTSend(sGetSchedule, 1);
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
 		
