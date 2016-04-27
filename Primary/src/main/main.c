@@ -101,6 +101,8 @@ int main(void)
 	
 	while(1){
 		
+	  LedBlink(&uTestLed, 50); //heartbeat
+		
 		//Read sensors
 		nTemp = 0; //getTempF();	                      //temperature
 		cMoisture = MoistureSensorGetMoisture();	//moisture
@@ -111,10 +113,10 @@ int main(void)
 		UARTMuxSetChannel(UART_MUX_PI);
 		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
+			LedBlink(&uTestLed, 50);
 			UARTSend(sGet, 1);
 			UARTReceive(sRec, 1);
 			//UARTSend(sRec, 2); //echo the character received
-			//LedBlink(&uTestLed, 50);
 		}
 		sRec[0] = 0;
 		
