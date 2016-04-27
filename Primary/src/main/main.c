@@ -104,7 +104,7 @@ int main(void)
 	  LedBlink(&uTestLed, 50); //heartbeat
 		
 		//Read sensors
-		nTemp = 0; //getTempF();	                      //temperature
+		nTemp = 0; //getTempF();	                //temperature
 		cMoisture = MoistureSensorGetMoisture();	//moisture
 		cLight = LightSensorGetIntensity();	      //light
 		bProx = ProximitySensorInRange();	        //proximity

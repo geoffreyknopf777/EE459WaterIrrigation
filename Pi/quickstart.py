@@ -95,17 +95,17 @@ def main():
         for event in events2:
             zone2='1'			
 
-          #Zone1 and Zone2
-          port.write(zone1+'\r\n')
-          port.write(zone2+'\r\n')
-          echozone1 = port.read(1)
-          echozone2 = port.read(1)
+        #Zone1 and Zone2
+        port.write(zone1)
+        port.write(zone2)
+        echozone1 = port.read(1)
+        echozone2 = port.read(1)
 					
-          print('Echo zone 1: ', echozone1)
-          print('Echo zone 2: ', echozone2)
-          print('Done sending schedule')
-          print('')
-          time.sleep(10)
+        print('Echo zone 1: ', echozone1)
+        print('Echo zone 2: ', echozone2)
+        print('Done sending schedule')
+        print('')
+        time.sleep(10)
 
 if __name__ == '__main__':
     main()
