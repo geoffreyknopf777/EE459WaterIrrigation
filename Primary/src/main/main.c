@@ -13,6 +13,8 @@
 #include "uart.h"
 #include "uart_mux.h"
 #include "ds1631.h"
+#include "lightsensor.h"
+#include "moisturesensor.h"
 #include "proximitysensor.h"
 #include "smartled.h"
 #include "led.h"
