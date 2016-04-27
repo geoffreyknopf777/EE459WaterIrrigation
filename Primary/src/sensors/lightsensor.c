@@ -9,7 +9,7 @@
 #include "adc.h"
 #include "lightsensor.h"
 
-unsigned char cAnIn;
+static unsigned char cAnIn;
 
 /* Initialize the light sensor module */
 void LightSensorInit(unsigned char cAnInSet){
