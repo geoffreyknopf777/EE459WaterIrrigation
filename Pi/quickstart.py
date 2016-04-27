@@ -66,7 +66,7 @@ def main():
     while True:
       port.write("z")
       rcv = port.read(1)
-		  print(rcv)
+      print(rcv)
 		
     while True:
 
