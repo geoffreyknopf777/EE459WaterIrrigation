@@ -112,7 +112,7 @@ int main(void)
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
 		
-		while(sRec[0] == 'n'){ //keep sending signal until acknowledged
+		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			UARTSend(sGet, 1);
 			UARTReceive(sRec, 1);
 		}

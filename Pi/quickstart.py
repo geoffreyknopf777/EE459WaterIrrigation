@@ -92,9 +92,8 @@ def main():
             zone2='1'
 		
         print('Wait for Schedule Request')
-        msg='g'
         rcv = port.read(1)
-        if msg == rcv:
+        if rcv == 'g':
           port.write('a') #acknowledge the signal				
 
           #Zone1 and Zone2
