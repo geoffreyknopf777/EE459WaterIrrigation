@@ -64,6 +64,11 @@ def main():
     port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
 
     while True:
+      port.write("z")
+			rcv = port.read(1)
+		  print(rcv)
+		
+    while True:
 
         print('Get current time')
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time

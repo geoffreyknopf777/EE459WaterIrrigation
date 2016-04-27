@@ -112,6 +112,11 @@ int main(void)
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
 		
+		while(1){
+			UARTReceive(sRec, 1);	
+			UARTSend(sGet, 1);		
+		}
+		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			LedBlink(&uTestLed, 50);
 			UARTSend(sGet, 1);
