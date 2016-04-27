@@ -5,6 +5,7 @@
 *lightsensor.c
 *************************************************/
 
+#include "macros.h"
 #include "adc.h"
 #include "lightsensor.h"
 

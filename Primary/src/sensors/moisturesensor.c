@@ -5,6 +5,7 @@
 *moisturesensor.c
 *************************************************/
 
+#include "macros.h"
 #include "adc.h"
 #include "moisturesensor.h"
 
