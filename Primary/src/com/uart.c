@@ -70,12 +70,7 @@ char rx_char()
 	int nTimeout = 0;
 
  // Wait for receive complete flag to go high
-	while ( !(UCSR0A & (1 << RXC0)) ){
-		//nTimeout++;
-		//if(nTimeout > 1000){
-		//	return '\0';
-		}
-	}
+	while ( !(UCSR0A & (1 << RXC0)) ){}
 		return UDR0;
 }
 
