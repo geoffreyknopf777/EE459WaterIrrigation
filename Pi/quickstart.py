@@ -71,8 +71,9 @@ def main():
         print('Message received: ', rcv)
         if msg == rcv:
           port.write("a") #acknowledge the signal
-				
-          print('Get current time')
+          print(port.read()) #get echo				
+          
+					print('Get current time')
           now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
           later = (datetime.datetime.utcnow() + timedelta(minutes=1)).isoformat() + 'Z'
     
@@ -108,7 +109,6 @@ def main():
           port.write(repr(zone1))
           #Zone2
           port.write(repr(zone2))
-          print(port.read()) #get echo
           print('')
 
 if __name__ == '__main__':

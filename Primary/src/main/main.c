@@ -114,12 +114,12 @@ int main(void)
 			UARTSend(sGet, 1);
 			LedBlink(&uTestLed, 50);
 			UARTReceive(sRec, 1);
+			UARTSend(sRec, 1); //echo the character received
 		}
 		sRec[0] = 0;
 		
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
-	  UARTSend(sRec, 1); //echo the character received
 		
 		//Control the valves
 		if(sZone1[0] == 1 /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
