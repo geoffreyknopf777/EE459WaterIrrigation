@@ -8,14 +8,10 @@
 #include "adc.h"
 #include "temperaturesensor.h"
 
-volatile uint8_t* pPORT;
-volatile unsigned char* pPIN;
 unsigned char cAnIn;
 
 /* Initialize the temperature sensor module */
-void TemperatureSensorInit(volatile uint8_t* pPORTSet, volatile unsigned char* pPINSet, unsigned char cAnInSet){
-	pPORT = pPORTSet;
-	pPIN = pPINSet;
+void TemperatureSensorInit(unsigned char cAnInSet){
 	cAnIn = cAnInSet;
 }
 

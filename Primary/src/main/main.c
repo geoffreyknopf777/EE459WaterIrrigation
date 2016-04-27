@@ -12,7 +12,7 @@
 #include "macros.h"
 #include "uart.h"
 #include "uart_mux.h"
-#include "temperaturesensor.h"
+#include "ds1631.h"
 #include "proximitysensor.h"
 #include "smartled.h"
 #include "led.h"
@@ -24,10 +24,37 @@
 #define MAX_MSG_LEN 256
 #define SMART_LED_NUM 6
 
+//DEBUG: fix later
+#define TEMP_MIN 60
+#define MOISTURE_MAX 10
+#define LIGHT_MIN 10
+#define LIGHT_MAX 20
+
+void ds1631_init ();
+void ds1631_conv ();
+void ds1631_temp (unsigned char *);
+
 LED uTestLed; //test led
 SmartLED aSmartLED[SMART_LED_NUM]; //smart led
 char sSendMsg[MAX_MSG_LEN]; //send buffer
 char sRecMsg[MAX_MSG_LEN]; //receive buffer
+
+int getTempF(){
+#define DEC 0x80
+	int nF, nF2, nC2;
+	unsigned char aTempC[2];
+	ds1631_temp(aTempC); // Read the temperature data
+	if(aTempC[1] == DEC){ //with 0.5 decimal
+		nC2 = 2*aTempC[0] + 1; //multiply by two for better resolution
+		nF2 = 4 * (nC2) / 5 + (nC2) + 64; //calculate with 0.5 decimal portion
+		nF = nF2 / 2;
+	}
+	else{ //without 0.5 decimal
+		nF = 4*aTempC[0]/5 + aTempC[0] + 32; //calculate just integer portion
+	}
+
+	return nF;
+}
 
 void RunTests(void){
 	TestATmega328PPins();
@@ -42,39 +69,58 @@ void Init(void){
 	for(i=0; i<SMART_LED_NUM; i++){
 		SmartLEDInit(&aSmartLED[i], COLOR_RED); //smart led init
 	}
-	UARTInit(UART_BAUD_RATE); //uart init
+	UARTInit(UART_BAUD_RATE);                                          //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init
-	TemperatureSensorInit(&DDRC, &PORTC, 0); //temperature sensor init
-	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2); //proximity sensor init
-	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7); //sprinkler relay init
+	TemperatureSensorInit(0);                                          //temperature sensor init
+	MoistureSensorInit(&DDRC, &PORTC, 1, 3);                           //moisture sensor init
+	LightSensorInit(2);                                                //light sensor init
+	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2);                      //proximity sensor init
+	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7);                     //sprinkler relay init
 }
 
 int main(void)
 {
-	char sGetSchedule[] = "g";
-	char sZone1[1];
-	char sZone2[1];
-	//unsigned char degreesCelsius;
+	//sensor variables
+	unsigned char cTemperature;
+	unsigned char cMoisture;
+	unsigned char cLight;
+	bool bProximity;
+	
+	char sSend[2] = "g";
+	char sRec[2] = "";
+	char sZone1[2] = "0";
+	char sZone2[2] = "0";
 	
 	Init();
 	
 	while(1){
 		
+		//Read sensors
+		cTemperature = TemperatureSensorReadC();	//temperature
+		cMoisture = MoistureSensorGetMoisture();	//moisture
+		cLight = LightSensorGetIntensity();	      //light
+		bProximity = ProximitySensorInRange();	  //proximity
 		
 		//Get Schedule from PI
 		UARTMuxSetChannel(UART_MUX_PI);
-		UARTSend(sGetSchedule, 1);
+		
+		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
+			UARTSend(sSend, 1);
+			UARTReceive(sRec, 1);
+		}
+		sRec[0] = 0;
+		
 		UARTReceive(sZone1, 1); //zone 1
 		UARTReceive(sZone2, 1); //zone 2
 		
 		//Control the valves
-		if(sZone1[0] == '1'){
+		if(sZone1[0] == 1 && cTemperature > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProximity){
 			RelayTurnOn0();
 		}
 		else{
 			RelayTurnOff0();
 		}
-		if(sZone2[0] == '1'){
+		if(sZone2[0] == 1 && cTemperature > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProximity){
 			RelayTurnOn1();
 		}
 		else{
@@ -90,10 +136,6 @@ int main(void)
 		//delay_ms(1000);
 		
 		//degreesCelsius = TemperatureSensorReadC();
-		
-		//RelayTurnOn0();
-		//RelayTurnOn1();
-		//delay_ms(500);
 		
 		//UARTMuxSelect(i);
 		//delay_ms(1);

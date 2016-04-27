@@ -2,16 +2,16 @@
 *Water Irrigation Project
 *EE 459
 *Team 4
-*humiditysensor.h
+*moisturesensor.h
 *************************************************/
 
-#ifndef HUMIDITYSENSOR_H
-#define HUMIDITYSENSOR_H
+#ifndef MOISTURESENSOR_H
+#define MOISTURESENSOR_H
 
 /* Initialize the humidity sensor module */
-void HumiditySensorInit(void);
+void MoistureSensorInit(volatile uint8_t* pDDRSet, volatile uint8_t* pPORTSet, unsigned char nPinNumSet, unsigned char nAnalogPinNumSet);
 
-/* Get the humidity */
-int HumiditySensorGetHumidity(void);
+/* Get the moisture */
+unsigned char MoistureSensorGetMoisture(void);
 
-#endif /* HUMIDITYSENSOR_H */
+#endif /* MOISTURESENSOR_H */
