@@ -8,6 +8,8 @@
 #ifndef MOISTURESENSOR_H
 #define MOISTURESENSOR_H
 
+#include <inttypes.h>
+
 /* Initialize the humidity sensor module */
 void MoistureSensorInit(volatile uint8_t* pDDRSet, volatile uint8_t* pPORTSet, unsigned char nPinNumSet, unsigned char nAnalogPinNumSet);
 
