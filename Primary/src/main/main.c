@@ -118,8 +118,9 @@ int main(void)
 		}
 		sRec[0] = 0;
 		
-		UARTReceive(sZone1, 1); //zone 1
-		UARTReceive(sZone2, 1); //zone 2
+		UARTReceive(sRec, 2); //zone 1 and 2
+		sZone1[0] = sRec[0];
+		sZone2[0] = sRec[2];
 		
 		//Control the valves
 		if(sZone1[0] == 1 /*&& nTemp > TEMP_MIN && cMoisture < MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
