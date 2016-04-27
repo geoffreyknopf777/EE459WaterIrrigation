@@ -99,7 +99,7 @@ def main():
 
           #Zone1 and Zone2
           port.write(zone1)
-					port.write(zone2)
+          port.write(zone2)
           echozone1 = port.read(1)
           echozone2 = port.read(1)
 					
