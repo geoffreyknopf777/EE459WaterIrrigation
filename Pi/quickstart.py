@@ -105,6 +105,8 @@ def main():
           print('Done sending schedule')
           print('')
           time.sleep(10)
+        else:
+          port.write("n")
 
 if __name__ == '__main__':
     main()

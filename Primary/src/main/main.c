@@ -112,7 +112,7 @@ int main(void)
 		
 		while(sRec[0] != 'a'){ //keep sending signal until acknowledged
 			UARTSend(sGet, 1);
-			UARTReceive(sRec, 2);
+			UARTReceive(sRec, 1);
 			//UARTSend(sRec, 2); //echo the character received
 			//LedBlink(&uTestLed, 50);
 		}
