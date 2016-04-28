@@ -57,7 +57,7 @@ def main():
     10 events on the user's calendar.
     """
 		
-		time.sleep(20) #sleep to ensure internet/serial starts late enough in boot process
+    time.sleep(20) #sleep to ensure internet/serial starts late enough in boot process
 		
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
