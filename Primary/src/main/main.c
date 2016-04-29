@@ -151,7 +151,7 @@ int main(void)
 				SmartLEDSetColor(COLOR_NONE, i);
 			}
 		}	
-	SmartLEDProcess();
+	//SmartLEDProcess();
 		
 	}
 	return 0;   /* never reached */
