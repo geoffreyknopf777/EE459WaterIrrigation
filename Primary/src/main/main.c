@@ -98,6 +98,9 @@ int main(void)
 	
 	while(1){
 		
+		SmartLEDProcess();
+		continue;
+		
 	  LedBlink(&uTestLed, 50); //heartbeat
 		
 		//Read sensors
@@ -129,8 +132,6 @@ int main(void)
 		else{
 			RelayTurnOff1();
 		}		
-		
-		SmartLEDProcess();
 	}
   
 	return 0;   /* never reached */
