@@ -48,5 +48,5 @@ void SmartLEDProcess(void){
 	}
 	
 	//Delay for 1ms after sending color info
-	delay_ms(1);
+	//delay_ms(1);
 }
