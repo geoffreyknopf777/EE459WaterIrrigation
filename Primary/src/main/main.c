@@ -133,7 +133,7 @@ int main(void)
 			RelayTurnOff1();
 		}		
 		
-		//SmartLEDProcess();
+		SmartLEDProcess();
 	}
   
 	return 0;   /* never reached */
