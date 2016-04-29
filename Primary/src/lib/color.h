@@ -13,6 +13,7 @@
 #define COLOR_GREEN   ( ColorRGBCreate(0, 255, 0) )
 #define COLOR_BLUE    ( ColorRGBCreate(0, 0, 255) )
 #define COLOR_PURPLE  ( ColorRGBCreate(160, 32, 240) )
+#define COLOR_NONE    ( ColorRGBCreate(0, 0, 0) )
 
 /* RGB color structure definition */
 struct ColorRGB{
