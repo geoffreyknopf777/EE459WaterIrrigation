@@ -42,7 +42,7 @@ void SmartLEDProcess(void){
 	unsigned char sColor[3];
 	
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
-	UARTSetBaudRate(SMART_LED_BAUD);
+	//UARTSetBaudRate(SMART_LED_BAUD);
 	
 	for(i=0; i<SMART_LED_NUM; i++){
 		sColor[0] = aSmartLeds[i].uColor.cRed;
