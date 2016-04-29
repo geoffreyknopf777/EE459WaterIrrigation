@@ -103,11 +103,11 @@ def main():
         port.write(zone2)
         echozone1 = port.read(1)
         echozone2 = port.read(1)
-				moisture = port.read(1)
+        moisture = port.read(1)
 					
         print('Echo zone 1: ', echozone1)
         print('Echo zone 2: ', echozone2)
-				print('Moisture: ', moisture)
+        print('Moisture: ', moisture)
         print('Done sending schedule')
         print('')
         time.sleep(1)
