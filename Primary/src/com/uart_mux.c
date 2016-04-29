@@ -82,7 +82,7 @@ void UARTMuxSetChannel(unsigned char cSelectChan){
 		ClearBits(*pPORT_S2, nPinNum_S2, 1);
 	}
 	
-	delay_ms(10);
+	delay_ms(500);
 }
 
 unsigned char UARTMuxGetChannel(void){
