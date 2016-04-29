@@ -125,6 +125,7 @@ int main(void)
 		UARTSend(sZone1, 1);
 		UARTSend(sZone2, 1);
 		UARTSend(&cLight, 1);
+		UARTSend(&cMoisture, 1);
 		
 		//Control the valves
 		if(sZone1[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX  && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx){
