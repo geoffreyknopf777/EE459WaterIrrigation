@@ -150,8 +150,9 @@ int main(void)
 			for(i=3; i<SMART_LED_NUM; i++){
 				SmartLEDSetColor(COLOR_NONE, i);
 			}
-		}		
+		}	
+	SmartLEDProcess();
+		
 	}
-  SmartLEDProcess();
 	return 0;   /* never reached */
 }
