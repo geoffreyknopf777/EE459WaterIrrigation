@@ -29,6 +29,11 @@ void MoistureSensorInit(volatile uint8_t* pDDRSet, volatile uint8_t* pPORTSet, u
 
 /* Get the moisture */
 unsigned char MoistureSensorGetMoisture(void){
+	int i;
+	int sum = 0;
+	unsigned average;
+	int elements = 5;
+	
 	//select the correct analog input pin for adc conversion
 	AdcInit(nAnalogPinNum);
 	
@@ -38,8 +43,13 @@ unsigned char MoistureSensorGetMoisture(void){
 	delay_ms(100);
 	
 	//read in the raw data
-	return AdcRead();	
+	for(int i=0; i<elements; i++){
+		sum += AdcRead();	
+	}
+	average = sum / elements;
 	
 	//Turn off the moisture sensor
 	ClearBits(*pPORT, nPinNum, 1);
+	
+	return average;
 }
