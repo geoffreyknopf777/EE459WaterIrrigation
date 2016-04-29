@@ -9,9 +9,10 @@
 #define COLOR_H
 
 /* Common color definitions */
-#define COLOR_RED   ( ColorRGBCreate(255, 0, 0) )
-#define COLOR_GREEN ( ColorRGBCreate(0, 255, 0) )
-#define COLOR_BLUE  ( ColorRGBCreate(0, 0, 255) )
+#define COLOR_RED     ( ColorRGBCreate(255, 0, 0) )
+#define COLOR_GREEN   ( ColorRGBCreate(0, 255, 0) )
+#define COLOR_BLUE    ( ColorRGBCreate(0, 0, 255) )
+#define COLOR_PURPLE  ( ColorRGBCreate(160, 32, 240) )
 
 /* RGB color structure definition */
 struct ColorRGB{
