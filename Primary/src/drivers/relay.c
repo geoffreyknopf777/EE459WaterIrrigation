@@ -24,7 +24,7 @@ void RelayInit(volatile uint8_t* pDDR_R0Set, volatile uint8_t* pPORT_R0Set, unsi
 	pPORT_R0 = pPORT_R0Set;
 	pPORT_R1 = pPORT_R1Set;
 	nPinNum_R0 = nPinNum_R0Set;
-	nPinNum_R0 = nPinNum_R0Set;
+	nPinNum_R1 = nPinNum_R1Set;
 	
 	//initialize the select bit outputs
 	SetBits(*pDDR_R0Set, nPinNum_R0, 1);
