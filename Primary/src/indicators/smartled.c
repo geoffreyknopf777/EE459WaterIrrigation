@@ -44,7 +44,7 @@ void SmartLEDProcess(void){
 
 	int i;
 	for(i=0; i<SMART_LED_NUM; i++){
-		UARTSend(&(sSmartLeds[i].uColor), 3);
+		UARTSend(&(aSmartLeds[i].uColor), 3);
 	}
 	
 	//Delay for 1ms after sending color info
