@@ -97,7 +97,7 @@ int main(void)
 	Init();
 	
 	while(1){
-		LedBlink(&uTestLed, 50); //heartbeat
+		LedBlink(&uTestLed, 200); //heartbeat
 		
 		SmartLEDProcess();
 		continue;
