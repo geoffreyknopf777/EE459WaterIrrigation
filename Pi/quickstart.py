@@ -107,7 +107,7 @@ def main():
 					
         print('Echo zone 1: ', echozone1)
         print('Echo zone 2: ', echozone2)
-        print('Moisture: ', chr(moisture))
+        print('Moisture: ', ord(moisture))
         print('Done sending schedule')
         print('')
         time.sleep(1)
