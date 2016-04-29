@@ -6,6 +6,7 @@
 *************************************************/
 
 #include "macros.h"
+#include "timer.h"
 #include "adc.h"
 #include "moisturesensor.h"
 
