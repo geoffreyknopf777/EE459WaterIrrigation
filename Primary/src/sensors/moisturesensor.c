@@ -32,7 +32,7 @@ unsigned char MoistureSensorGetMoisture(void){
 	int i;
 	int sum = 0;
 	unsigned average;
-	int elements = 5;
+	int elements = 10;
 	
 	//select the correct analog input pin for adc conversion
 	AdcInit(nAnalogPinNum);
@@ -40,11 +40,10 @@ unsigned char MoistureSensorGetMoisture(void){
 	//Turn on the moisture sensor
 	SetBits(*pPORT, nPinNum, 1);
 	
-	delay_ms(100);
-	
 	//read in the raw data
 	for(int i=0; i<elements; i++){
 		sum += AdcRead();	
+		delay_ms(10);
 	}
 	average = sum / elements;
 	
