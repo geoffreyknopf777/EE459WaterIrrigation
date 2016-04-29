@@ -81,7 +81,7 @@ void Init(void){
 	MoistureSensorInit(&DDRC, &PORTC, 1, 3);                           //moisture sensor init
 	LightSensorInit(2);                                                //light sensor init
 	ProximitySensorInit(&PORTD, &DDRD, &PIND, 2);                      //proximity sensor init
-	RelayInit(&DDRB, &PORTB, 0, &DDRD, &PORTD, 7);                     //sprinkler relay init
+	RelayInit(&DDRD, &PORTD, 7, &DDRB, &PORTB, 0);                     //sprinkler relay init
 }
 
 int main(void)
