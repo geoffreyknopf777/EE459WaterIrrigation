@@ -97,11 +97,11 @@ int main(void)
 	Init();
 	
 	while(1){
+		LedBlink(&uTestLed, 50); //heartbeat
 		
 		SmartLEDProcess();
 		continue;
 		
-	  LedBlink(&uTestLed, 50); //heartbeat
 		
 		//Read sensors
 		nTemp = 0; //getTempF();	                //temperature

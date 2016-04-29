@@ -39,7 +39,7 @@ and forwards subsequent bytes to next led in chain.
 */
 void SmartLEDProcess(void){
 	int i;
-	char sColor[3];
+	unsigned char sColor[3];
 	
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
 	UARTSetBaudRate(SMART_LED_BAUD);
