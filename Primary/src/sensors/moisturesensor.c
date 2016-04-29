@@ -34,6 +34,8 @@ unsigned char MoistureSensorGetMoisture(void){
 	//Turn on the moisture sensor
 	SetBits(*pPORT, nPinNum, 1);
 	
+	delay_ms(100);
+	
 	//read in the raw data
 	return AdcRead();	
 	
