@@ -66,14 +66,12 @@ void RunTests(void){
 	TestATmega328PPins();
 }
 
-struct SmartLED uLed;
-
 void Init(void){
 	int i;
 	
 	LedInit(&uTestLed, &DDRB, &PORTB, 1); //test led init
 	for(i=0; i<SMART_LED_NUM; i++){
-		SmartLEDInit(&aSmartLED[i], COLOR_RED); //smart led init
+		SmartLEDSetColor(COLOR_RED, i); //smart led init
 	}
 	UARTInit(UART_BAUD_RATE);                                          //uart init
 	UARTMuxInit(&DDRD, &PORTD, 4, &DDRD, &PORTD, 5, &DDRD, &PORTD, 6); //uart mux init

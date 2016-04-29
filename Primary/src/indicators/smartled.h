@@ -14,17 +14,11 @@ struct SmartLED{
 	struct ColorRGB uColor;
 };
 
-/* Initialize a smart led instance.
-The first led to be initialized will be the first led in the chain,
-the next led to be initialized will be the next led in the chain,
-and so on. */
-void SmartLEDInit(struct SmartLED* pSmartLed, struct ColorRGB uColor);
-
 /* Set the color of a smart led instance */
-void SmartLEDSetColor(struct SmartLED* pSmartLed, struct ColorRGB uColor);
+void SmartLEDSetColor(struct ColorRGB uColor, int nLEDIndex);
 
 /* Get the color of a smart led instance */
-ColorRGB SmartLEDGetColor(struct SmartLED* pSmartLed);
+ColorRGB SmartLEDGetColor(int nLEDIndex);
 
 /* Call this function continously in a loop or interrupt.
 The smartled module must continuously send color commands

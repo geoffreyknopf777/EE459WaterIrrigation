@@ -15,34 +15,19 @@
 #include "smartled.h"
 
 #define SMART_LED_BAUD 115200
+#define SMART_LED_NUM 6
 
-linkedlist led_list;
-bool initialized = false;
+SmartLED aSmartLeds[SMART_LED_NUM];
 
-/* Initialize a smart led instance.
-The first led to be initialized will be the first led in the chain,
-the next led to be initialized will be the next led in the chain,
-and so on. */
-void SmartLEDInit(struct SmartLED* pSmartLed, struct ColorRGB uColor){
-	
-	if(!initialized){ //initialize the linked list on first call
-		LinkedListCreate(&led_list, sizeof(SmartLED), NULL, NULL);
-		initialized = true;
-	}
-	
-	(*pSmartLed).uColor = uColor; //set the color of the led
-	
-	LinkedListInsert(&led_list, pSmartLed); //insert the led into the linked list
+/* Set the color of a smart led */
+void SmartLEDSetColor(struct ColorRGB uColor, int nLEDIndex){
+	aSmartLeds[nLEDIndex].uColor = uColor;
 }
 
-/* Set the color of a smart led instance */
-void SmartLEDSetColor(struct SmartLED* pSmartLed, struct ColorRGB uColor){
-	(*pSmartLed).uColor = uColor;
-}
 
-/* Get the color of a smart led instance */
-ColorRGB SmartLEDGetColor(struct SmartLED* pSmartLed){
-	return (*pSmartLed).uColor;
+/* Get the color of a smart led */
+ColorRGB SmartLEDGetColor(int nLEDIndex){
+	return aSmartLeds[nLEDIndex].uColor;
 }
 
 /* Call this function continously in a loop or interrupt.
@@ -53,35 +38,15 @@ Each led in chain interprets first 3 bytes as it's own color,
 and forwards subsequent bytes to next led in chain.
 */
 void SmartLEDProcess(void){
-	node* pNode;
-	struct SmartLED* pLed;
-	uint32_t oldBaud;
-	unsigned char oldChannel;
 	
-	//Set uart baud rate
-	oldBaud = UARTGetBaudRate();
-	oldChannel = UARTMuxGetChannel();
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
 	UARTSetBaudRate(SMART_LED_BAUD);
-	
-	//Loop over each element of the led linked list
-	/*
-	pNode = led_list.pHead;
-	while(pNode != NULL){
-		pLed = (SmartLED*)(pNode->pData);
-		UARTSend(&pLed->uColor, sizeof(pLed->uColor)); //send bytes for colors
-		pNode = (node*)pNode->pNext;
-	}
-	*/
+
 	int i;
-	for(i=0; i<6; i++){
-		UARTSend(&i, 3);
+	for(i=0; i<SMART_LED_NUM; i++){
+		UARTSend(&(sSmartLeds[i].uColor), 3);
 	}
-	
-	//UARTMuxSetChannel(oldChannel);
-	//UARTSetBaudRate(oldBaud);
 	
 	//Delay for 1ms after sending color info
 	delay_ms(1);
-	
 }
