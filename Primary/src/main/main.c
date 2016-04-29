@@ -101,7 +101,7 @@ int main(void)
 		int i;
 		for(i=0; i<SMART_LED_NUM; i++){
 			ColorRGB uColor = SmartLEDGetColor(i);
-			SmartLEDSetColor(ColorRGBCreate(uColor.cRed*i+1, uColor.cGreen*2*i+3, uColor.cBlue+10*i), i);
+			SmartLEDSetColor(ColorRGBCreate(uColor.cRed*(i+1)+1, uColor.cGreen*2*(i+1)+3, uColor.cBlue+10*(i+1)), i);
 		}
 		SmartLEDProcess();
 		continue;
