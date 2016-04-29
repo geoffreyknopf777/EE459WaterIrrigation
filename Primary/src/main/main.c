@@ -124,7 +124,6 @@ int main(void)
 		}
 		else{
 			RelayTurnOff0();
-			RelayTurnOff0();
 		}
 		if(sZone2[0] == '1' /* && nTemp > TEMP_MIN */ /*&& cMoisture > MOISTURE_MAX */ && cLight > LIGHT_MIN && cLight < LIGHT_MAX /*&& !bProx */){
 			RelayTurnOn1();
