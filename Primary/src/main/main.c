@@ -98,7 +98,11 @@ int main(void)
 	
 	while(1){
 		LedBlink(&uTestLed, 200); //heartbeat
-		
+		int i;
+		for(i=0; i<SMART_LED_NUM; i++){
+			ColorRGB uColor = SmartLEDGetColor(i);
+			SmartLEDSetColor(ColorRGBCreate(uColor.cRed+1, uColor.cGreen*2+3, uColor.cBlue+10), i);
+		}
 		SmartLEDProcess();
 		continue;
 		
