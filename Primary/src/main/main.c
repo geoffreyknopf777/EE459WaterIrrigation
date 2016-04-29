@@ -29,8 +29,8 @@
 //DEBUG: fix later
 #define TEMP_MIN 60
 #define MOISTURE_MAX 197
-#define LIGHT_MIN 10
-#define LIGHT_MAX 20
+#define LIGHT_MIN 64
+#define LIGHT_MAX 128
 
 /*
 void ds1631_init ();
@@ -116,17 +116,17 @@ int main(void)
 		UARTReceive(sZone2, 1); //zone 2
 		UARTSend(sZone1, 1);
 		UARTSend(sZone2, 1);
-		UARTSend(&cMoisture, 1);
+		UARTSend(&cLight, 1);
 		
 		//Control the valves
-		if(sZone1[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX /* && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
+		if(sZone1[0] == '1' /* && nTemp > TEMP_MIN */ /*&& cMoisture > MOISTURE_MAX*/  && cLight > LIGHT_MIN && cLight < LIGHT_MAX /*&& !bProx */){
 			RelayTurnOn0();
 		}
 		else{
 			RelayTurnOff0();
 			RelayTurnOff0();
 		}
-		if(sZone2[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX /* && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx */){
+		if(sZone2[0] == '1' /* && nTemp > TEMP_MIN */ /*&& cMoisture > MOISTURE_MAX */ && cLight > LIGHT_MIN && cLight < LIGHT_MAX /*&& !bProx */){
 			RelayTurnOn1();
 		}
 		else{
