@@ -28,7 +28,7 @@
 
 //DEBUG: fix later
 #define TEMP_MIN 60
-#define MOISTURE_MAX 195
+#define MOISTURE_MAX 197
 #define LIGHT_MIN 10
 #define LIGHT_MAX 20
 
