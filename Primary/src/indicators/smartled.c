@@ -38,15 +38,17 @@ Each led in chain interprets first 3 bytes as it's own color,
 and forwards subsequent bytes to next led in chain.
 */
 void SmartLEDProcess(void){
+	int i;
+	char sColor[3];
 	
 	UARTMuxSetChannel(UART_MUX_SMART_LED);
 	UARTSetBaudRate(SMART_LED_BAUD);
-
-	int i;
+	
 	for(i=0; i<SMART_LED_NUM; i++){
-		UARTSend(&(aSmartLeds[i].uColor.cRed), 1);
-		UARTSend(&(aSmartLeds[i].uColor.cGreen), 1);
-		UARTSend(&(aSmartLeds[i].uColor.cBlue), 1);
+		sColor[0] = aSmartLeds[i].uColor.cRed;
+		sColor[1] = aSmartLeds[i].uColor.cGreen;
+		sColor[2] = aSmartLeds[i].uColor.cBlue;
+		UARTSend(sColor, 3);
 	}
 	
 	//Delay for 1ms after sending color info
