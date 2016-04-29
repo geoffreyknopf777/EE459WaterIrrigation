@@ -128,7 +128,7 @@ int main(void)
 		UARTSend(&cMoisture, 1);
 		
 		//Control the valves
-		if(sZone1[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX  && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx){
+		if(sZone1[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX /* && cLight > LIGHT_MIN && cLight < LIGHT_MAX */ && !bProx){
 			RelayTurnOn0();
 			/*
 			for(i=0; i<SMART_LED_NUM/2; i++){
@@ -144,7 +144,7 @@ int main(void)
 			}
 			*/
 		}
-		if(sZone2[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX && cLight > LIGHT_MIN && cLight < LIGHT_MAX && !bProx){
+		if(sZone2[0] == '1' /* && nTemp > TEMP_MIN */ && cMoisture > MOISTURE_MAX /* && cLight > LIGHT_MIN && cLight < LIGHT_MAX */ && !bProx){
 			RelayTurnOn1();
 			/*
 			for(i=3; i<SMART_LED_NUM; i++){
