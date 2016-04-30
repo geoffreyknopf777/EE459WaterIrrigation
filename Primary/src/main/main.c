@@ -29,8 +29,8 @@
 //DEBUG: fix later
 #define TEMP_MIN 60
 #define MOISTURE_MAX 190
-#define LIGHT_MIN 120
-#define LIGHT_MAX 220
+#define LIGHT_MIN 90
+#define LIGHT_MAX 230
 
 /*
 void ds1631_init ();
